@@ -41,7 +41,7 @@ public class Token
         };
 
     const char COMMA = ',';
-    const int NUMBER_PRECENDENCY = 11;
+    internal const int NUMBER_PRECENDENCY = 11;
 
     private TYPE _type;
     /// <summary>
@@ -63,7 +63,7 @@ public class Token
     /// </summary>
     /// <param name="str"></param>
     /// <param name="type"></param>
-    private Token(string str, TYPE type, int precendency)
+    public Token(string str, TYPE type, int precendency)
     {
         this._token = str;
         this._type = type;
