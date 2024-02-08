@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary1
+﻿namespace ClassLibrary1;
+public class Node<T>(T value)
 {
-    public class Node<T>
-    {
-        public T Value { get; set; }
-        public Node<T> Left { get; set; }
-        public Node<T> Right { get; set; }
-
-        public Node(T value)
-        {
-            Value = value;
-            Left = null;
-            Right = null;
-        }
-    }
+    public T Value { get; set; } = value;
+    public Node<T> Left { get; set; } = null;
+    public Node<T> Right { get; set; } = null;
 }
