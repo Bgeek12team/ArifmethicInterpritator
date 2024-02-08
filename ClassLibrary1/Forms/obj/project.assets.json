@@ -8,35 +8,31 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\UserName\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Алексей\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UserName\\Source\\Repos\\ArifmethicInterpritator\\ClassLibrary1\\Forms\\Forms.csproj",
+      "projectUniqueName": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator54321\\ClassLibrary1\\Forms\\Forms.csproj",
       "projectName": "Forms",
-      "projectPath": "C:\\Users\\UserName\\Source\\Repos\\ArifmethicInterpritator\\ClassLibrary1\\Forms\\Forms.csproj",
-      "packagesPath": "C:\\Users\\UserName\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UserName\\Source\\Repos\\ArifmethicInterpritator\\ClassLibrary1\\Forms\\obj\\",
+      "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator54321\\ClassLibrary1\\Forms\\Forms.csproj",
+      "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator54321\\ClassLibrary1\\Forms\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\UserName\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Алексей\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -12,4 +12,4 @@ var variables = new Dictionary<char, double>()
     {'x', 12 },
 };
 
-Console.WriteLine(exp.CalculateAt(variables));
+Console.WriteLine(exp.CalculateAt(variables, out _));

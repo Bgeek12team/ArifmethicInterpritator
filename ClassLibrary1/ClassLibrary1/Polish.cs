@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClassLibrary1;
 public static class Polish
 {
-    
+
     public static Token[] ToInversePolishView(Token[] expression)
     {
         var output = new List<Token>();
@@ -23,10 +23,10 @@ public static class Polish
             }
             else if (
                 token.Type == Token.TYPE.BINARY_OPERATOR ||
-                token.Type == Token.TYPE.FUNCTION 
+                token.Type == Token.TYPE.FUNCTION
                 )
             {
-                while (operators.Count > 0 && 
+                while (operators.Count > 0 &&
                     token.Precendency <= operators.Peek().Precendency)
                 {
                     output.Add(operators.Pop());
