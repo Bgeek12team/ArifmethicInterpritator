@@ -31,7 +31,7 @@
             label1 = new Label();
             groupBox1 = new GroupBox();
             rcTxBx_InputData = new RichTextBox();
-            groupBox2 = new GroupBox();
+            gB_Controller = new GroupBox();
             b4_SaveEval = new Button();
             b3_ExpEval = new Button();
             b2_GetListLex = new Button();
@@ -39,7 +39,7 @@
             gB_LexAnal = new GroupBox();
             rcTxBx_outData = new RichTextBox();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            gB_Controller.SuspendLayout();
             gB_LexAnal.SuspendLayout();
             SuspendLayout();
             // 
@@ -73,19 +73,19 @@
             rcTxBx_InputData.Text = "";
             rcTxBx_InputData.TextChanged += rcTxBx_InputData_TextChanged;
             // 
-            // groupBox2
+            // gB_Controller
             // 
-            groupBox2.Controls.Add(b4_SaveEval);
-            groupBox2.Controls.Add(b3_ExpEval);
-            groupBox2.Controls.Add(b2_GetListLex);
-            groupBox2.Controls.Add(b1_GetTreeLex);
-            groupBox2.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            groupBox2.Location = new Point(21, 160);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(240, 278);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Управление";
+            gB_Controller.Controls.Add(b4_SaveEval);
+            gB_Controller.Controls.Add(b3_ExpEval);
+            gB_Controller.Controls.Add(b2_GetListLex);
+            gB_Controller.Controls.Add(b1_GetTreeLex);
+            gB_Controller.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            gB_Controller.Location = new Point(21, 160);
+            gB_Controller.Name = "gB_Controller";
+            gB_Controller.Size = new Size(240, 278);
+            gB_Controller.TabIndex = 2;
+            gB_Controller.TabStop = false;
+            gB_Controller.Text = "Управление";
             // 
             // b4_SaveEval
             // 
@@ -124,6 +124,7 @@
             b2_GetListLex.TabIndex = 1;
             b2_GetListLex.Text = "Получить список лексем";
             b2_GetListLex.UseVisualStyleBackColor = false;
+            b2_GetListLex.Click += b2_GetListLex_Click;
             // 
             // b1_GetTreeLex
             // 
@@ -165,13 +166,13 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(702, 450);
             Controls.Add(gB_LexAnal);
-            Controls.Add(groupBox2);
+            Controls.Add(gB_Controller);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
             groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
+            gB_Controller.ResumeLayout(false);
             gB_LexAnal.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -181,7 +182,7 @@
 
         private Label label1;
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
+        private GroupBox gB_Controller;
         private Button b3_ExpEval;
         private Button b2_GetListLex;
         private Button b1_GetTreeLex;

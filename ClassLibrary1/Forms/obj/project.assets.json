@@ -1,31 +1,45 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "ClassLibrary1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary1.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ClassLibrary1/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary1/ClassLibrary1.csproj",
+      "msbuildProject": "../ClassLibrary1/ClassLibrary1.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "ClassLibrary1 >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Алексей\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Анна\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator777\\ClassLibrary1\\Forms\\Forms.csproj",
+      "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\Forms\\Forms.csproj",
       "projectName": "Forms",
-      "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator777\\ClassLibrary1\\Forms\\Forms.csproj",
-      "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator777\\ClassLibrary1\\Forms\\obj\\",
+      "projectPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\Forms\\Forms.csproj",
+      "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\Forms\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Алексей\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -38,7 +52,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

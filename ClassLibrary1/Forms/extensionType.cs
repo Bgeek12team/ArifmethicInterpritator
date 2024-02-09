@@ -20,5 +20,10 @@ namespace Forms
             changeBlink.Start();
             changeOriginal.Start();
         }
+        public static int chekCorrect(this string expression)
+        {
+            if (expression.count('(') != expression.count(')')) { return 0; }
+            else { return -1; }
+        }
     }
 }

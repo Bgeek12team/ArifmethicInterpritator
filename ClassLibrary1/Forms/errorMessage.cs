@@ -16,5 +16,26 @@ namespace Forms
         {
             InitializeComponent();
         }
+
+
+        private void errorMessage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void b1Contimue_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public void showError(string errorMessage)
+        {
+            lbErrorMessage.Text = errorMessage;
+            this.Show();
+        }
+
+        private void lbErrorMessage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
