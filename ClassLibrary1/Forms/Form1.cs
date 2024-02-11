@@ -5,7 +5,7 @@ namespace Forms
 
     public partial class Form1 : Form
     {
-
+        Token[] tokens;
         errorMessage errorMessageForm;
         int errorKey;
         Dictionary<int, Action> actions;
@@ -18,8 +18,6 @@ namespace Forms
             {
                 {-1, () => {extensionType.blinkColor(b4_SaveEval ,Color.Green); changeState(true, b1_GetTreeLex, b2_GetListLex, b3_ExpEval); } },
                 {0, () => errorMessageForm.showError("Неккоректно раставлены скобки") }
-        
-    
             };
         }
 
@@ -43,13 +41,20 @@ namespace Forms
         private void b2_GetListLex_Click(object sender, EventArgs e)
         {
             var expression = rcTxBx_InputData.Text;
-            var tokens = Token.Tokenize(expression);
+            tokens = Token.Tokenize(expression);
             var inverse = Polish.ToInversePolishView(tokens);
+
             foreach (var token in inverse)
             {
                 rcTxBx_outData.Text += $"{token}\n";
-
             }
+        }
+
+        private void b3_ExpEval_Click(object sender, EventArgs e)
+        {
+            tokens = Token.Tokenize(rcTxBx_InputData.Text);
+            var test = new expEval();
+            test.formOpen(tokens, rcTxBx_InputData.Text);
         }
     }
 }

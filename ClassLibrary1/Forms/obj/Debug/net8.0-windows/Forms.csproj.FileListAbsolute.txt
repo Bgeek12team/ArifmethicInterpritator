@@ -56,3 +56,4 @@ C:\Users\Анна\source\repos\Intepretator\ClassLibrary1\Forms\bin\Debug\net8.0
 C:\Users\Анна\source\repos\Intepretator\ClassLibrary1\Forms\bin\Debug\net8.0-windows\ClassLibrary1.pdb
 C:\Users\Анна\source\repos\Intepretator\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.AssemblyReference.cache
 C:\Users\Анна\source\repos\Intepretator\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.CopyComplete
+C:\Users\Анна\source\repos\Intepretator\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.expEval.resources

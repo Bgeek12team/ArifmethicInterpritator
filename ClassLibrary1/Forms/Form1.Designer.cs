@@ -112,6 +112,7 @@
             b3_ExpEval.TabIndex = 2;
             b3_ExpEval.Text = "Вычисление выражения";
             b3_ExpEval.UseVisualStyleBackColor = false;
+            b3_ExpEval.Click += b3_ExpEval_Click;
             // 
             // b2_GetListLex
             // 
