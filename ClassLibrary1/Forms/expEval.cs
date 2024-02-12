@@ -17,6 +17,7 @@ namespace Forms
         private List<char> variables;
         private string exp;
         private GroupBox groupBox;
+        private Label expControl;
         private List<TextBox> txBxInputs;
 
         public expEval()
@@ -84,8 +85,17 @@ namespace Forms
                 Location = new Point(x, y + 10),
                 Font = new Font("TimeNewRomans", 14)
             };
+            expControl = new Label()
+            {
+                Text = exp,
+                Location = new Point(x + 200, y - variables.Count * 40),
+                Font = new Font("TimeNewRomans", 21),
+                Size = new Size(500, 300)
+            };
+
             buttonGetResult.Click += ButtonGetResult_Click;
             form.Controls.Add(buttonGetResult);
+            form.Controls.Add(expControl);
             return form;
         }
 
@@ -95,7 +105,7 @@ namespace Forms
             var variable = new Dictionary<char, double>();
             for (int i = 0; i < variables.Count; i++)
                 variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
-            MessageBox.Show(Convert.ToString(expression.CalculateAt(variable, out _)));
+            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable, out _));
 
 
         }
