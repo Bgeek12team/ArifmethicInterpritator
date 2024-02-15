@@ -16,6 +16,7 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "exp",  (TYPE.FUNCTION       , 3) },
             { "ln",   (TYPE.FUNCTION       , 3) },
             { "sqrt", (TYPE.FUNCTION       , 3) },
+            { "fact", (TYPE.FUNCTION       , 3) },
             { "(",    (TYPE.L_BRACE        , -1) },
             { ")",    (TYPE.R_BRACE        , -1) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
@@ -53,7 +54,12 @@ public partial class Token(string str, Token.TYPE type, int precendency)
                 start++;
                 continue;
             }
-            start = ParseNum(tokens, str, start);
+            var adj = ParseNum(tokens, str, start);
+            if (adj > start)
+            {
+                start = adj;
+                continue;
+            }
             if (start > str.Length - 1)
             {
                 break;

@@ -1,14 +1,4 @@
 ﻿using ClassLibrary1;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Forms
 {
@@ -105,7 +95,7 @@ namespace Forms
             var variable = new Dictionary<char, double>();
             for (int i = 0; i < variables.Count; i++)
                 variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
-            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable, out _));
+            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable));
 
 
         }
