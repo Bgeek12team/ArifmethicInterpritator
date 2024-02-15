@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Анна\\.nuget\\packages\\": {}
+    "C:\\Users\\MB_Markelov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
+      "projectUniqueName": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
       "projectName": "ClassLibrary1",
-      "projectPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
-      "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\obj\\",
+      "projectPath": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
+      "packagesPath": "C:\\Users\\MB_Markelov\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MB_Markelov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

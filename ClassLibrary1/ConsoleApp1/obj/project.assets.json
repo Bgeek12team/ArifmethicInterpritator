@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Анна\\.nuget\\packages\\": {}
+    "C:\\Users\\MB_Markelov\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
-      "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ConsoleApp1\\obj\\",
+      "projectPath": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "packagesPath": "C:\\Users\\MB_Markelov\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MB_Markelov\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -53,8 +53,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-              "projectPath": "C:\\Users\\Анна\\source\\repos\\Intepretator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\MB_Markelov\\Documents\\GitHub\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
             }
           }
         }
