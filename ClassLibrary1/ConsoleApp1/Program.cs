@@ -13,4 +13,4 @@ var variables = new Dictionary<char, double>()
     {'y', 2 }
 };
 
-Console.WriteLine(exp.CalculateAt(variables, out _));
+Console.WriteLine(exp.CalculateAt(variables));

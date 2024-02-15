@@ -60,10 +60,6 @@ public class Expression(string expression)
         {"pi", Math.PI }
     };
     /// <summary>
-    /// Массив токенов в постфиксной записи
-    /// </summary>
-    private Token[]? Postfix { get; set; }
-    /// <summary>
     /// Верхняя вершина дерева парсинга
     /// </summary>
     private Node<Token> treeNode;
@@ -74,13 +70,13 @@ public class Expression(string expression)
 
     public double CalculateAt(Dictionary<char, double> variables)
     {
-        if (Postfix == null)
+        if (treeNode == null)
             try
             {
                 var tokens = Token.Tokenize(StringExpression);
-                Postfix = Polish.ToInversePolishView(tokens);
-                Transform();
-                treeNode = CalculateTree(Postfix);
+                var postfix = Polish.ToInversePolishView(tokens);
+                Transform(postfix);
+                treeNode = CalculateTree(postfix);
             }
             catch
             {
@@ -141,14 +137,14 @@ public class Expression(string expression)
             return BinaryOperators[node.Value.TokenString](leftValue, rightValue);
     }
 
-    private void Transform()
+    private void Transform(Token[] postfix)
     {
-        for (var i = 0; i < Postfix.Length; i++)
+        for (var i = 0; i < postfix.Length; i++)
         {
-            if (Postfix[i].Type == Token.TYPE.CONSTANT)
+            if (postfix[i].Type == Token.TYPE.CONSTANT)
             {
-                var value = Constants[Postfix[i].TokenString].ToString();
-                Postfix[i] = new Token(value, Token.TYPE.FLOAT_NUM, Token.NUMBER_PRECENDENCY);
+                var value = Constants[postfix[i].TokenString].ToString();
+                postfix[i] = new Token(value, Token.TYPE.FLOAT_NUM, Token.NUMBER_PRECENDENCY);
             }
         }
 

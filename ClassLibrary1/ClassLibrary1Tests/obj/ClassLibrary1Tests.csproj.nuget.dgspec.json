@@ -1,9 +1,90 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\Forms\\Forms.csproj": {}
+    "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {}
   },
   "projects": {
+    "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+        "projectName": "ClassLibrary1Tests",
+        "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+        "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Алексей\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+                "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[3.0.4, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.0.4, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -57,72 +138,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\Forms\\Forms.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\Forms\\Forms.csproj",
-        "projectName": "Forms",
-        "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\Forms\\Forms.csproj",
-        "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\Forms\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\Алексей\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0-windows"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0-windows7.0": {
-            "targetAlias": "net8.0-windows",
-            "projectReferences": {
-              "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-                "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorfdsadfa\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WindowsForms": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
