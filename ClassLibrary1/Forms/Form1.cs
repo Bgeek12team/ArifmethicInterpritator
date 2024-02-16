@@ -52,8 +52,8 @@ namespace Forms
         private void b3_ExpEval_Click(object sender, EventArgs e)
         {
             tokens = Token.Tokenize(rcTxBx_InputData.Text);
-            var test = new expEval();
-            test.formOpen(tokens, rcTxBx_InputData.Text);
+            var test = new ExpEval();
+            test.FormOpen(tokens, rcTxBx_InputData.Text);
         }
 
         private void b1_GetTreeLex_Click(object sender, EventArgs e)

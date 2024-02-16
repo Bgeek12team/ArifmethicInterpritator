@@ -17,9 +17,9 @@ namespace Forms
             var tokens = Token.Tokenize(expression);
             foreach (var item in tokens)
             {
-                if (item.Type.ToString() == "VARIABLE")
+                if (item.Type == Token.TYPE.VARIABLE)
                 {
-                    variables.Add(Convert.ToChar(item.TokenString), 1);
+                    variables.TryAdd(Convert.ToChar(item.TokenString), 1);
                 }
             }
             var exp = new Expression(expression);

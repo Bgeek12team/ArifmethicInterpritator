@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Forms
 {
-    public partial class expEval : Form
+    public partial class ExpEval : Form
     {
         private List<char> variables;
         private string exp;
@@ -21,14 +21,14 @@ namespace Forms
         private RichTextBox rcBox_postFix;
         Token[] tokens;
 
-        public expEval()
+        public ExpEval()
         {
             
             InitializeComponent();
             
             
         }
-        public void formOpen(Token[] tokens, string expression)
+        public void FormOpen(Token[] tokens, string expression)
         {
             variables = new List<char>();
             foreach (Token token in tokens)
@@ -38,19 +38,19 @@ namespace Forms
             exp = expression;
             this.Show();
             txBxInputs = new List<TextBox>();
-            groupBox = forming();
+            groupBox = Forming();
             this.Controls.Add(groupBox);
             
         }
 
 
-        private void expEval_Load(object sender, EventArgs e)
+        private void ExpEval_Load(object sender, EventArgs e)
         {
             
         }
 
 
-        private GroupBox forming()
+        private GroupBox Forming()
         {
             var form = new GroupBox()
             {

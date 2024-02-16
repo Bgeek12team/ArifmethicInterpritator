@@ -1,7 +1,33 @@
 ﻿namespace ClassLibrary1;
-public class Node<T>(T value)
+/// <summary>
+/// Представляет узел в структуре данных бинарного дерева.
+/// </summary>
+/// <typeparam name="T">Тип значения, хранящегося в узле.</typeparam>
+public class Node<T>
 {
-    public T Value { get; set; } = value;
-    public Node<T> Left { get; set; } = null;
-    public Node<T> Right { get; set; } = null;
+    /// <summary>
+    /// Получает или задает значение, хранящееся в узле.
+    /// </summary>
+    public T Value { get; set; }
+
+    /// <summary>
+    /// Получает или задает левый дочерний узел текущего узла.
+    /// </summary>
+    public Node<T> Left { get; set; }
+
+    /// <summary>
+    /// Получает или задает правый дочерний узел текущего узла.
+    /// </summary>
+    public Node<T> Right { get; set; }
+
+    /// <summary>
+    /// Инициализирует новый экземпляр класса Node с указанным значением.
+    /// </summary>
+    /// <param name="value">Значение, которое будет храниться в узле.</param>
+    public Node(T value)
+    {
+        Value = value;
+        Left = null;
+        Right = null;
+    }
 }

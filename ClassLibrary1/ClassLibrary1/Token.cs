@@ -1,7 +1,16 @@
 ﻿namespace ClassLibrary1;
-
+/// <summary>
+/// Токен, или же лексема, арифметического выражения
+/// </summary>
+/// <param name="str">строковое представление лексемы</param>
+/// <param name="type">тип лексеы</param>
+/// <param name="precendency">приоритет лексемы</param>
 public partial class Token(string str, Token.TYPE type, int precendency)
 {
+    /// <summary>
+    /// Словарь, связывающий строковое представление лексем
+    /// их тип и приоритет
+    /// </summary>
     internal static readonly Dictionary<string, (TYPE tokenType, int precendency)> tokenMap = new()
          {
             { "+",    (TYPE.BINARY_OPERATOR, 0) },
@@ -35,7 +44,9 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// Строка, отображающая токен
     /// </summary>
     public string TokenString { get => str; }
-
+    /// <summary>
+    /// Приоритет токена
+    /// </summary>
     public int Precendency { get => precendency; }
 
     /// <summary>
@@ -84,6 +95,10 @@ public partial class Token(string str, Token.TYPE type, int precendency)
 
         return [.. tokens];
     }
+    /// <summary>
+    /// Преобразует бинарные минусы в унарные при необходимости
+    /// </summary>
+    /// <param name="tokens">Обрабатываемый список токенов</param>
     private static void ParseUnary(List<Token> tokens)
     {
         if (tokens[0].TokenString == "-")
@@ -106,13 +121,24 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             }
         }
     }
+    /// <summary>
+    /// Проверяет, является ли токен числом в том или ином виде
+    /// </summary>
+    /// <returns>
+    /// True: токен является числом в том или ином виде
+    /// False: все иные случаи
+    /// </returns>
     internal bool IsNumber()
         => this.Type == TYPE.FLOAT_NUM || this.Type == TYPE.INT_NUM ||
            this.Type == TYPE.CONSTANT || this.Type == TYPE.VARIABLE;
 
-    internal bool IsBracket()
-        => this.Type == TYPE.L_BRACE || this.Type == TYPE.R_BRACE;
-
+    /// <summary>
+    /// Обрабатывает число в списке токенов
+    /// </summary>
+    /// <param name="tokens">список токенов</param>
+    /// <param name="str">Обрабатываемая строка</param>
+    /// <param name="start">Индекс, с которого начинается обработка чисел</param>
+    /// <returns>Индекс, следующий за последним символом строки</returns>
     private static int ParseNum(List<Token> tokens, string str, int start)
     {
         var end = str.Length;

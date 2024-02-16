@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class expEval
+    partial class ExpEval
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             ClientSize = new Size(784, 411);
             Name = "expEval";
             Text = "expEval";
-            Load += expEval_Load;
+            Load += ExpEval_Load;
             ResumeLayout(false);
         }
 

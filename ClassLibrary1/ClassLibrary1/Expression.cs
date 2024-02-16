@@ -49,7 +49,11 @@ public class Expression(string expression)
     /// Выражение в строковом виде
     /// </summary>
     public string StringExpression { get; init; } = expression;
-
+    /// <summary>
+    /// Вычисляет значение выражения при заданных перменных
+    /// </summary>
+    /// <param name="variables">Словарь, связывающий перменные и их значения</param>
+    /// <returns>Значение выражения при заданных перменных</returns>
     public double CalculateAt(Dictionary<char, double> variables)
     {
         if (TreeNode == null)
@@ -69,6 +73,13 @@ public class Expression(string expression)
 
         return res;
     }
+    /// <summary>
+    /// строит дерево парсинга по массиву токенов в постфиксной записи
+    /// </summary>
+    /// <param name="tokens">массив токенов в постификной записи</param>
+    /// <returns>верхняя вершина дерева парсинга</returns>
+    /// <exception cref="Exception">исключение возникающее 
+    /// если значение выражения невозможно вычислить</exception>
     private static Node<Token> CalculateTree(Token[] tokens)
     {
         var stack = new Stack<Node<Token>>();
@@ -96,7 +107,12 @@ public class Expression(string expression)
             return res;
         throw new Exception("Невозможно вычислить значение");
     }
-
+    /// <summary>
+    /// вычисляет значение дерева парсинга по словарю переменных-значений
+    /// </summary>
+    /// <param name="node">вершина дерева парсинга</param>
+    /// <param name="variables">словарь переменных-значений/param>
+    /// <returns>значение дерева парсинга</returns>
     static double EvaluateExpression(Node<Token> node, Dictionary<char, double> variables)
     {
         if (node == null)
@@ -118,7 +134,10 @@ public class Expression(string expression)
         else
             return BinaryOperators[node.Value.TokenString](leftValue, rightValue);
     }
-
+    /// <summary>
+    /// Преобразует массив токенов, заменяя константы фактическими значениямии
+    /// </summary>
+    /// <param name="postfix">массив токенов</param>
     private void Transform(Token[] postfix)
     {
         for (var i = 0; i < postfix.Length; i++)

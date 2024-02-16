@@ -1,6 +1,14 @@
 ﻿namespace ClassLibrary1;
+/// <summary>
+/// Класс, переводящий массив токенов в инверсную польскую запись
+/// </summary>
 public static class Polish
 {
+    /// <summary>
+    /// Переводит массив токенов в инверсную польскую запись
+    /// </summary>
+    /// <param name="expression">Массив токенов</param>
+    /// <returns>Массив токенов в инверсной польской записи</returns>
     public static Token[] ToInversePolishView(Token[] expression)
     {
         var output = new List<Token>();
