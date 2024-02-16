@@ -7,7 +7,6 @@ namespace Forms
     {
         Token[] tokens;
         errorMessage errorMessageForm;
-        int errorKey;
         Dictionary<int, Action> actions;
 
         public Form1()
@@ -40,6 +39,7 @@ namespace Forms
 
         private void b2_GetListLex_Click(object sender, EventArgs e)
         {
+            rcTxBx_outData.Text = "";
             var expression = rcTxBx_InputData.Text;
             tokens = Token.Tokenize(expression);
             var inverse = Polish.ToInversePolishView(tokens);
@@ -57,5 +57,14 @@ namespace Forms
             test.formOpen(tokens, rcTxBx_InputData.Text);
         }
 
+        private void b1_GetTreeLex_Click(object sender, EventArgs e)
+        {
+            rcTxBx_outData.Text = "";
+            var expression = rcTxBx_InputData.Text;
+            var tree = parsingTree.parseTree(expression);
+
+            foreach (var item in tree)
+                rcTxBx_outData.Text += item;
+        }
     }
 }
