@@ -103,3 +103,26 @@ C:\Users\Анна\Desktop\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\
 C:\Users\Анна\Desktop\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.CopyComplete
 C:\Users\Анна\Desktop\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.genruntimeconfig.cache
 C:\Users\Анна\Desktop\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\ref\Forms.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\Forms.exe
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\Forms.deps.json
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\Forms.runtimeconfig.json
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\Forms.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\Forms.pdb
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\ClassLibrary1.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\bin\Debug\net8.0-windows\ClassLibrary1.pdb
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.AssemblyReference.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.errorMessage.resources
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.expEval.resources
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.Form1.resources
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.GenerateResource.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.GeneratedMSBuildEditorConfig.editorconfig
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.AssemblyInfoInputs.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.AssemblyInfo.cs
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.CoreCompileInputs.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.sourcelink.json
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.csproj.CopyComplete
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\refint\Forms.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.pdb
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\Forms.genruntimeconfig.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\Forms\obj\Debug\net8.0-windows\ref\Forms.dll

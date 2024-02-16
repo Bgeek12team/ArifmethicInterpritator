@@ -27,19 +27,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Анна\\.nuget\\packages\\": {}
+    "C:\\Users\\Алексей\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
+      "projectUniqueName": "E:\\второй курс\\2сем\\АИСД\\практик\\ЦИКЛ (ПМС)\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
       "projectName": "Forms",
-      "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
-      "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\obj\\",
+      "projectPath": "E:\\второй курс\\2сем\\АИСД\\практик\\ЦИКЛ (ПМС)\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
+      "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
+      "outputPath": "E:\\второй курс\\2сем\\АИСД\\практик\\ЦИКЛ (ПМС)\\тест\\ClassLibrary1\\Forms\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Алексей\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -53,8 +58,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-              "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            "E:\\второй курс\\2сем\\АИСД\\практик\\ЦИКЛ (ПМС)\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "E:\\второй курс\\2сем\\АИСД\\практик\\ЦИКЛ (ПМС)\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
             }
           }
         }

@@ -70,3 +70,15 @@ C:\Users\Анна\Desktop\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\
 C:\Users\Анна\Desktop\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\refint\ClassLibrary1.dll
 C:\Users\Анна\Desktop\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.pdb
 C:\Users\Анна\Desktop\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ref\ClassLibrary1.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\bin\Debug\net8.0\ClassLibrary1.deps.json
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\bin\Debug\net8.0\ClassLibrary1.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\bin\Debug\net8.0\ClassLibrary1.pdb
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.GeneratedMSBuildEditorConfig.editorconfig
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.AssemblyInfoInputs.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.AssemblyInfo.cs
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.csproj.CoreCompileInputs.cache
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.sourcelink.json
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\refint\ClassLibrary1.dll
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ClassLibrary1.pdb
+E:\второй курс\2сем\АИСД\практик\ЦИКЛ (ПМС)\тест\ClassLibrary1\ClassLibrary1\obj\Debug\net8.0\ref\ClassLibrary1.dll
