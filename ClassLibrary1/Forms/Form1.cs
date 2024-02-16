@@ -1,6 +1,4 @@
-п»їusing ClassLibrary1;
-using System.Xml.Linq;
-using System;
+using ClassLibrary1;
 
 namespace Forms
 {
@@ -12,7 +10,6 @@ namespace Forms
         int errorKey;
         Dictionary<int, Action> actions;
 
-
         public Form1()
         {
             InitializeComponent();
@@ -20,9 +17,8 @@ namespace Forms
             actions = new Dictionary<int, Action>
             {
                 {-1, () => {extensionType.blinkColor(b4_SaveEval ,Color.Green); changeState(true, b1_GetTreeLex, b2_GetListLex, b3_ExpEval); } },
-                {0, () => errorMessageForm.showError("РќРµРєРєРѕСЂРµРєС‚РЅРѕ СЂР°СЃС‚Р°РІР»РµРЅС‹ СЃРєРѕР±РєРё") }
+                {0, () => errorMessageForm.showError("Неккоректно раставлены скобки") }
             };
-
         }
 
         private void rcTxBx_InputData_TextChanged(object sender, EventArgs e)
@@ -44,12 +40,11 @@ namespace Forms
 
         private void b2_GetListLex_Click(object sender, EventArgs e)
         {
-            rcTxBx_outData.Text = String.Empty;
             var expression = rcTxBx_InputData.Text;
             tokens = Token.Tokenize(expression);
+            var inverse = Polish.ToInversePolishView(tokens);
 
-
-            foreach (var token in tokens)
+            foreach (var token in inverse)
             {
                 rcTxBx_outData.Text += $"{token}\n";
             }
@@ -62,18 +57,5 @@ namespace Forms
             test.formOpen(tokens, rcTxBx_InputData.Text);
         }
 
-        private void b1_GetTreeLex_Click(object sender, EventArgs e)
-        {
-            rcTxBx_outData.Text = String.Empty;
-            var expression = rcTxBx_InputData.Text;
-            var tree = parsingTree.parseTree(expression);
-            foreach (var item in tree)
-            {
-                rcTxBx_outData.Text += item;
-            }
-
-        }
-
-        
     }
 }

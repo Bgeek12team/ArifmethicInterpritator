@@ -1,6 +1,6 @@
 ﻿using ClassLibrary1;
 
-var expression = "x + 12 + y";
+var expression = "-x + y";
 var tokens = Token.Tokenize(expression);
 var inverse = Polish.ToInversePolishView(tokens);
 foreach (var token in inverse)
@@ -13,4 +13,4 @@ var variables = new Dictionary<char, double>()
     {'y', 2 }
 };
 
-Console.WriteLine(exp.CalculateAt(variables, out _));
+//Console.WriteLine(exp.CalculateAt(variables, out _));
