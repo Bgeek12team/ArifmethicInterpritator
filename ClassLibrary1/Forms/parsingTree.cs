@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Forms
 {
-    internal static class parsingTree
+    internal static class ParsingTree
     {
         private static List<string> result;
-        public static List<string> parseTree(string expression)
+        public static List<string> ParseTree(string expression)
         {
             result = new List<string>();
             Dictionary<char, double> variables = new Dictionary<char, double>();
@@ -22,7 +22,9 @@ namespace Forms
                     variables.Add(Convert.ToChar(item.TokenString), 1);
                 }
             }
-            var value = new Expression(expression).CalculateAt(variables, out var node);
+            var exp = new Expression(expression);
+            var value = exp.CalculateAt(variables);
+            var node = exp.TreeNode; 
             PrintParsingTree(node);
             return result;
         }

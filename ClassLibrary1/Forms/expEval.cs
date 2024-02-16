@@ -17,8 +17,8 @@ namespace Forms
         private List<char> variables;
         private string exp;
         private GroupBox groupBox;
-        private Label expControl;
         private List<TextBox> txBxInputs;
+        private RichTextBox rcBox_postFix;
         Token[] tokens;
 
         public expEval()
@@ -87,17 +87,17 @@ namespace Forms
                 Location = new Point(x, y + 10),
                 Font = new Font("TimeNewRomans", 14)
             };
-            expControl = new Label()
+
+            rcBox_postFix = new RichTextBox()
             {
                 Text = exp,
                 Location = new Point(x + 200, y - variables.Count * 40),
-                Font = new Font("TimeNewRomans", 21),
+                Font = new Font("TimeNewRomans", 16),
                 Size = new Size(500, 300)
             };
-
             buttonGetResult.Click += ButtonGetResult_Click;
             form.Controls.Add(buttonGetResult);
-            form.Controls.Add(expControl);
+            form.Controls.Add(rcBox_postFix);
             return form;
         }
 
@@ -105,12 +105,20 @@ namespace Forms
         {
             var expression = new Expression(exp);
             var variable = new Dictionary<char, double>();
+
             for (int i = 0; i < variables.Count; i++)
-                variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
+            {
+                if (txBxInputs[i].Text.itsNum())
+                {
+                    variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
+                } else { MessageBox.Show("Некорректное значение переменных!","ОШИБКА"); return; }
+                
+            }
             var inverse = Polish.ToInversePolishView(tokens);
-            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable, out _)) + "\n Постфиксная запись:";
+            rcBox_postFix.Text += "= " + Convert.ToString(expression.CalculateAt(variable)) + "\n Постфиксная запись:";
+            
             foreach (var item in inverse)
-                expControl.Text += $"\n{item}";
+                rcBox_postFix.Text += $"\n{item}";
         }
     }
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hqvgB7Tpe1taRedGyyHWdOVC9/l7lBImDXenm6az5UD4X2kmy6R9A7+K8LhDZC8Gq2hT8sUnx7889x0rK6FRlA==",
+  "dgSpecHash": "pgSXFJjWkCZjJqYP88h5X3sa1mYnP7DXtcuTmH1riu0nooNGzR0Vi4c1lpwXNEglOQL+KZZhjRryD6E7HwCv6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

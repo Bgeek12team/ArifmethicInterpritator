@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {}
+    "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {
+    "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
         "projectName": "ClassLibrary1Tests",
-        "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+        "projectPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
         "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\obj\\",
+        "outputPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-                "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+              "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+                "projectPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+    "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
+        "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
         "projectName": "ClassLibrary1",
-        "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
+        "projectPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj",
         "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\obj\\",
+        "outputPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",

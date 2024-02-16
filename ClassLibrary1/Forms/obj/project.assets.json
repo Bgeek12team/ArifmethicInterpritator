@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
+      "projectUniqueName": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
       "projectName": "Forms",
-      "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
+      "projectPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\Forms\\Forms.csproj",
       "packagesPath": "C:\\Users\\Анна\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\Forms\\obj\\",
+      "outputPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\Forms\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Анна\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-              "projectPath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
             }
           }
         }

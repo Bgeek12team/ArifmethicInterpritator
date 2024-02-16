@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+3LldOruQvDrrjZhJNVHCB0gUx/TJ4wA0c7Y1w7k4Z69O/Dw+fj2qV8BWFYIVmcBY+/zAo6YcpK5OCfZ7Wxb4Q==",
+  "dgSpecHash": "1J+fgRkNtIImufjTOGvgpMMi3OtjvPFHZPh06sH6EcMXS9a6iwKDJUsYVqEwbE+jF5ATTI8MNJ404AGvc9vIxw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Анна\\Desktop\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+  "projectFilePath": "C:\\Users\\Анна\\source\\repos\\тест\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Анна\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Анна\\.nuget\\packages\\microsoft.codecoverage\\17.6.0\\microsoft.codecoverage.17.6.0.nupkg.sha512",

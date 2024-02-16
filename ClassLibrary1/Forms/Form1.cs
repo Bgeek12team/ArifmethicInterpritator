@@ -15,7 +15,7 @@ namespace Forms
             errorMessageForm = new errorMessage();
             actions = new Dictionary<int, Action>
             {
-                {-1, () => {extensionType.blinkColor(b4_SaveEval ,Color.Green); changeState(true, b1_GetTreeLex, b2_GetListLex, b3_ExpEval); } },
+                {-1, () => {ExtensionType.BlinkColor(b4_SaveEval ,Color.Green); changeState(true, b1_GetTreeLex, b2_GetListLex, b3_ExpEval); } },
                 {0, () => errorMessageForm.showError("Неккоректно раставлены скобки") }
             };
         }
@@ -29,7 +29,7 @@ namespace Forms
 
         private void b4_SaveEval_Click(object sender, EventArgs e)
         {
-            actions[rcTxBx_InputData.Text.chekCorrect()].Invoke();
+            actions[rcTxBx_InputData.Text.ChekCorrect()].Invoke();
         }
         private void changeState(bool state, params Control[] controls)
         {
@@ -42,9 +42,8 @@ namespace Forms
             rcTxBx_outData.Text = "";
             var expression = rcTxBx_InputData.Text;
             tokens = Token.Tokenize(expression);
-            var inverse = Polish.ToInversePolishView(tokens);
 
-            foreach (var token in inverse)
+            foreach (var token in tokens)
             {
                 rcTxBx_outData.Text += $"{token}\n";
             }
@@ -61,7 +60,7 @@ namespace Forms
         {
             rcTxBx_outData.Text = "";
             var expression = rcTxBx_InputData.Text;
-            var tree = parsingTree.parseTree(expression);
+            var tree = ParsingTree.ParseTree(expression);
 
             foreach (var item in tree)
                 rcTxBx_outData.Text += item;

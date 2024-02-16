@@ -16,7 +16,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("e * pi");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(Math.E * Math.PI, result, 1e-10);
         }
@@ -25,7 +25,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("sin(2*1^2 + 3*1 - 5)      / (1 + 1)");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(0, result);
         }
@@ -34,7 +34,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("(3 * ln(0 + 2) - sqrt(0)) / (cos(2*0) + 1)");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(0, result);
         }
@@ -43,7 +43,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("(e^5 + ln(5^2 + 1)) / sqrt(5)");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(67.82944756902512, result, 1e-10);
         }
@@ -53,7 +53,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("-(2 + 3)");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(-5, result);
         }
@@ -63,7 +63,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("2   +   3");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(5, result);
         }
@@ -73,7 +73,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("2^0");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(1, result);
         }
@@ -83,7 +83,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("2^-2");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(0.25, result);
         }
@@ -93,7 +93,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("1000000 + 500000");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(1500000, result);
         }
@@ -103,7 +103,7 @@ namespace ClassLibrary1.Tests
         {
             var calculator = new Expression("ctg(pi/4)");
 
-            var result = calculator.CalculateAt(new Dictionary<char, double>(), out _);
+            var result = calculator.CalculateAt(new Dictionary<char, double>());
 
             Assert.AreEqual(1, result, 1e-10);
         }

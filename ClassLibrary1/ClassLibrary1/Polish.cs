@@ -26,7 +26,7 @@ public static class Polish
 
             else if (token.Type == Token.TYPE.R_BRACE)
             {
-                while (operators.Count > 0 && 
+                while (operators.Count > 0 &&
                        operators.Peek().Type != Token.TYPE.L_BRACE)
                 {
                     output.Add(operators.Pop());

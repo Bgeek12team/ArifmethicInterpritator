@@ -1,6 +1,14 @@
 ﻿namespace ClassLibrary1;
+/// <summary>
+/// Арифметическое выражение, значение которого можно вычислить
+/// при данных значениях переменных
+/// </summary>
+/// <param name="expression">Строковое представление выражения</param>
 public class Expression(string expression)
 {
+    /// <summary>
+    /// Словарь, связывающий фукнции и их вычисление
+    /// </summary>
     private static readonly Dictionary<string, Func<double, double>> Functions = new()
     {
         {"sin", Math.Sin },
@@ -10,48 +18,58 @@ public class Expression(string expression)
         {"tg", Math.Tan },
         {"ctg", (x) => 1 / Math.Tan(x) },
         {"ln", Math.Log },
-        {"-", x => -x }
+        {"-", x => -x },
+        {"fact", x => Extentions.Factorial((int)x)}
     };
+    /// <summary>
+    /// Словарь, связывающий бинарные операторы и их вычисление
+    /// </summary>
     private static readonly Dictionary<string, Func<double, double, double>> BinaryOperators = new()
     {
         {"+", (a, b) => a + b },
         {"-", (a, b) => a - b },
         {"*", (a, b) => a * b },
         {"/", (a, b) => a / b },
-        {"^", (a, b) => Math.Pow(a, b) },
+        {"^", Math.Pow },
         {"%", (a, b) => a % b },
     };
+    /// <summary>
+    /// Словарь, связывающий константы и их значения
+    /// </summary>
     private readonly Dictionary<string, double> Constants = new()
     {
         {"e", Math.E },
         {"pi", Math.PI }
     };
-    private Token[]? Postfix { get; set; }
+    /// <summary>
+    /// Верхняя вершина дерева парсинга
+    /// </summary>
+    public Node<Token> TreeNode { get; private set; }
+    /// <summary>
+    /// Выражение в строковом виде
+    /// </summary>
     public string StringExpression { get; init; } = expression;
 
-    public double CalculateAt(Dictionary<char, double> variables, out Node<Token> node)
+    public double CalculateAt(Dictionary<char, double> variables)
     {
-        if (Postfix == null)
+        if (TreeNode == null)
             try
             {
                 var tokens = Token.Tokenize(StringExpression);
-                Postfix = Polish.ToInversePolishView(tokens);
+                var postfix = Polish.ToInversePolishView(tokens);
+                Transform(postfix);
+                TreeNode = CalculateTree(postfix);
             }
             catch
             {
-                node = null;
                 return double.NaN;
             }
 
-        var resultArr = Transform(variables);
-        var res = CalculateTree(resultArr, out var resNode);
+        var res = EvaluateExpression(TreeNode, variables);
 
-        resultArr = null;
-
-        node = resNode;
         return res;
     }
-    private static double CalculateTree(Token[] tokens, out Node<Token> tree)
+    private static Node<Token> CalculateTree(Token[] tokens)
     {
         var stack = new Stack<Node<Token>>();
 
@@ -67,28 +85,33 @@ public class Expression(string expression)
             if (token.Type == Token.TYPE.FUNCTION)
                 if (stack.TryPop(out var k))
                     node.Right = k;
-           
+
             if (token.Type == Token.TYPE.L_BRACE)
                 continue;
 
             stack.Push(node);
         }
 
-        stack.TryPop(out tree);
-        return EvaluateExpression(tree);
-
+        if (stack.TryPop(out var res))
+            return res;
+        throw new Exception("Невозможно вычислить значение");
     }
 
-    static double EvaluateExpression(Node<Token> node)
+    static double EvaluateExpression(Node<Token> node, Dictionary<char, double> variables)
     {
         if (node == null)
             return 0;
 
+        if (node.Value.Type == Token.TYPE.VARIABLE)
+        {
+            return variables[node.Value.TokenString.ToString()[0]];
+        }
+
         if (node.Value.IsNumber())
             return double.Parse(node.Value.TokenString);
 
-        double leftValue = EvaluateExpression(node.Left);
-        double rightValue = EvaluateExpression(node.Right);
+        double leftValue = EvaluateExpression(node.Left, variables);
+        double rightValue = EvaluateExpression(node.Right, variables);
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
             return Functions[node.Value.TokenString](rightValue);
@@ -96,25 +119,17 @@ public class Expression(string expression)
             return BinaryOperators[node.Value.TokenString](leftValue, rightValue);
     }
 
-    private Token[] Transform(Dictionary<char, double> variables)
+    private void Transform(Token[] postfix)
     {
-        var res = new Token[Postfix.Length];
-        Array.Copy(Postfix, res, res.Length);
-        for (var i = 0; i < res.Length; i++)
+        for (var i = 0; i < postfix.Length; i++)
         {
-            if (res[i].Type == Token.TYPE.VARIABLE)
+            if (postfix[i].Type == Token.TYPE.CONSTANT)
             {
-                var value = variables[res[i].TokenString[0]].ToString();
-                res[i] = new Token(value, Token.TYPE.FLOAT_NUM, Token.NUMBER_PRECENDENCY);
-            }
-            if (res[i].Type == Token.TYPE.CONSTANT)
-            {
-                var value = Constants[res[i].TokenString].ToString();
-                res[i] = new Token(value, Token.TYPE.FLOAT_NUM, Token.NUMBER_PRECENDENCY);
+                var value = Constants[postfix[i].TokenString].ToString();
+                postfix[i] = new Token(value, Token.TYPE.FLOAT_NUM, Token.NUMBER_PRECENDENCY);
             }
         }
 
-        return res;
     }
 }
 

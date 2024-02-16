@@ -1,4 +1,5 @@
 ﻿namespace ClassLibrary1;
+
 public partial class Token(string str, Token.TYPE type, int precendency)
 {
     internal static readonly Dictionary<string, (TYPE tokenType, int precendency)> tokenMap = new()
@@ -16,6 +17,7 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "exp",  (TYPE.FUNCTION       , 3) },
             { "ln",   (TYPE.FUNCTION       , 3) },
             { "sqrt", (TYPE.FUNCTION       , 3) },
+            { "fact", (TYPE.FUNCTION       , 3) },
             { "(",    (TYPE.L_BRACE        , -1) },
             { ")",    (TYPE.R_BRACE        , -1) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
@@ -23,7 +25,6 @@ public partial class Token(string str, Token.TYPE type, int precendency)
         };
 
     internal const char COMMA = ',';
-
     internal const int NUMBER_PRECENDENCY = 11;
     /// <summary>
     /// Тип текущего токена
@@ -53,7 +54,12 @@ public partial class Token(string str, Token.TYPE type, int precendency)
                 start++;
                 continue;
             }
-            start = ParseNum(tokens, str, start);
+            var adj = ParseNum(tokens, str, start);
+            if (adj > start)
+            {
+                start = adj;
+                continue;
+            }
             if (start > str.Length - 1)
             {
                 break;
