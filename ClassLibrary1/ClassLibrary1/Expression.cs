@@ -67,7 +67,7 @@ public class Expression(string expression)
             if (token.Type == Token.TYPE.FUNCTION)
                 if (stack.TryPop(out var k))
                     node.Right = k;
-
+           
             if (token.Type == Token.TYPE.L_BRACE)
                 continue;
 

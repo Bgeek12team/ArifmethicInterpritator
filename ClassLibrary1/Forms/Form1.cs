@@ -1,4 +1,6 @@
-using ClassLibrary1;
+Ôªøusing ClassLibrary1;
+using System.Xml.Linq;
+using System;
 
 namespace Forms
 {
@@ -10,6 +12,7 @@ namespace Forms
         int errorKey;
         Dictionary<int, Action> actions;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -17,8 +20,9 @@ namespace Forms
             actions = new Dictionary<int, Action>
             {
                 {-1, () => {extensionType.blinkColor(b4_SaveEval ,Color.Green); changeState(true, b1_GetTreeLex, b2_GetListLex, b3_ExpEval); } },
-                {0, () => errorMessageForm.showError("ÕÂÍÍÓÂÍÚÌÓ ‡ÒÚ‡‚ÎÂÌ˚ ÒÍÓ·ÍË") }
+                {0, () => errorMessageForm.showError("–ù–µ–∫–∫–æ—Ä–µ–∫—Ç–Ω–æ —Ä–∞—Å—Ç–∞–≤–ª–µ–Ω—ã —Å–∫–æ–±–∫–∏") }
             };
+
         }
 
         private void rcTxBx_InputData_TextChanged(object sender, EventArgs e)
@@ -40,11 +44,12 @@ namespace Forms
 
         private void b2_GetListLex_Click(object sender, EventArgs e)
         {
+            rcTxBx_outData.Text = String.Empty;
             var expression = rcTxBx_InputData.Text;
             tokens = Token.Tokenize(expression);
-            var inverse = Polish.ToInversePolishView(tokens);
 
-            foreach (var token in inverse)
+
+            foreach (var token in tokens)
             {
                 rcTxBx_outData.Text += $"{token}\n";
             }
@@ -56,5 +61,19 @@ namespace Forms
             var test = new expEval();
             test.formOpen(tokens, rcTxBx_InputData.Text);
         }
+
+        private void b1_GetTreeLex_Click(object sender, EventArgs e)
+        {
+            rcTxBx_outData.Text = String.Empty;
+            var expression = rcTxBx_InputData.Text;
+            var tree = parsingTree.parseTree(expression);
+            foreach (var item in tree)
+            {
+                rcTxBx_outData.Text += item;
+            }
+
+        }
+
+        
     }
 }

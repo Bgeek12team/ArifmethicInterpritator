@@ -19,6 +19,7 @@ namespace Forms
         private GroupBox groupBox;
         private Label expControl;
         private List<TextBox> txBxInputs;
+        Token[] tokens;
 
         public expEval()
         {
@@ -33,6 +34,7 @@ namespace Forms
             foreach (Token token in tokens)
                 if (token.Type.ToString() == "VARIABLE" && !variables.Contains(Convert.ToChar(token.TokenString)))
                     variables.Add(Convert.ToChar(token.TokenString));
+            this.tokens = tokens;
             exp = expression;
             this.Show();
             txBxInputs = new List<TextBox>();
@@ -105,9 +107,10 @@ namespace Forms
             var variable = new Dictionary<char, double>();
             for (int i = 0; i < variables.Count; i++)
                 variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
-            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable, out _));
-
-
+            var inverse = Polish.ToInversePolishView(tokens);
+            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable, out _)) + "\n Постфиксная запись:";
+            foreach (var item in inverse)
+                expControl.Text += $"\n{item}";
         }
     }
 

@@ -138,6 +138,7 @@
             b1_GetTreeLex.TabIndex = 0;
             b1_GetTreeLex.Text = "Получить дерево лексем";
             b1_GetTreeLex.UseVisualStyleBackColor = false;
+            b1_GetTreeLex.Click += b1_GetTreeLex_Click;
             // 
             // gB_LexAnal
             // 
