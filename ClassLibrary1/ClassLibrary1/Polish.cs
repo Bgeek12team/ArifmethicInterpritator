@@ -16,7 +16,7 @@ public static class Polish
 
         foreach (var token in expression)
         {
-            if (token.IsNumber())
+            if (token.IsNumber() || token.IsBoolean())
                 output.Add(token);
 
             else if (token.Type == Token.TYPE.BINARY_OPERATOR ||

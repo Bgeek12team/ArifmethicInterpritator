@@ -9,14 +9,9 @@ namespace Forms
 {
     static class ExtensionType
     {
-        public static int Count(this string str, char elem)
-        {
-            return str.Count(f => f == (elem));
-        }
-        public static bool itsNum(this string num)
-        {
-            return double.TryParse(num, out _);
-        }
+        public static int Count(this string str, char elem) => str.Count(f => f == (elem));
+        public static bool IsNumeric(this string num) => double.TryParse(num, out _);
+        public static bool IsBoolean(this string str) => bool.TryParse(str, out _);
         public static void BlinkColor(this Control control, Color color)
         {
             Color originalColor = control.BackColor;

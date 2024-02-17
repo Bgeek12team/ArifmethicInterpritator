@@ -32,7 +32,8 @@ namespace Forms
         {
             variables = new List<char>();
             foreach (Token token in tokens)
-                if (token.Type.ToString() == "VARIABLE" && !variables.Contains(Convert.ToChar(token.TokenString)))
+                if (token.Type == Token.TYPE.VARIABLE 
+                    && !variables.Contains(Convert.ToChar(token.TokenString)))
                     variables.Add(Convert.ToChar(token.TokenString));
             this.tokens = tokens;
             exp = expression;
@@ -104,18 +105,24 @@ namespace Forms
         private void ButtonGetResult_Click(object? sender, EventArgs e)
         {
             var expression = new Expression(exp);
-            var variable = new Dictionary<char, double>();
+            var variables = new Dictionary<char, double>();
+            var booleanVariables = new Dictionary<char, bool>();
 
-            for (int i = 0; i < variables.Count; i++)
+            for (int i = 0; i < this.variables.Count; i++)
             {
-                if (txBxInputs[i].Text.itsNum())
+                if (txBxInputs[i].Text.IsNumeric())
                 {
-                    variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
-                } else { MessageBox.Show("Некорректное значение переменных!","ОШИБКА"); return; }
+                    variables.Add(this.variables[i], Convert.ToDouble(txBxInputs[i].Text));
+                }
+                else if (txBxInputs[i].Text.IsBoolean())
+                {
+                    booleanVariables.Add(this.variables[i], Convert.ToBoolean(txBxInputs[i].Text));
+                }
+                else { MessageBox.Show("Некорректное значение переменных!","ОШИБКА"); return; }
                 
             }
             var inverse = Polish.ToInversePolishView(tokens);
-            var result = expression.CalculateAt(variable);
+            var result = expression.CalculateAt(variables, booleanVariables);
             if (expression.IsBooleanExpression)
                 rcBox_postFix.Text += "= " + Convert.ToString((bool)result + "\n Постфиксная запись:");
             else

@@ -47,6 +47,7 @@ public partial class Token
         /// </summary>
         ARIPTHMETIC_BOOLEAN_OPERATOR,
         BOOLEAN_BOOLEAN_OPERATOR,
-        BOOLEAN_FUNCTION
+        BOOLEAN_FUNCTION,
+        BOOLEAN_CONSTANT
     }
 }

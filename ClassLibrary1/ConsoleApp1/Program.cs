@@ -1,6 +1,6 @@
 ﻿using ClassLibrary1;
 
-var expression = "x > y | !(y < e)";
+var expression = "z & (sin x > cos y) & true ";
 var tokens = Token.Tokenize(expression);
 var inverse = Polish.ToInversePolishView(tokens);
 foreach (var token in inverse)
@@ -9,11 +9,14 @@ foreach (var token in inverse)
 var exp = new Expression(expression);
 var variables = new Dictionary<char, double>()
 {
-    {'x', 12 },
-    {'y', 2 },
-    {'z', 10 }
+    {'x', 1.17 },
+    {'y', 0.17 }
 };
-var result = exp.CalculateAt(variables);
+var boolVariables = new Dictionary<char, bool>()
+{
+    {'z', true }
+};
+var result = exp.CalculateAt(variables, boolVariables);
 if (exp.IsBooleanExpression)
     Console.WriteLine((bool)result);
 else

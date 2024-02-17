@@ -74,7 +74,8 @@ public class Expression(string expression)
     /// <returns>Значение выражения при заданных перменных</returns>
     public bool IsBooleanExpression { get; private set; } = false;
 
-    public object CalculateAt(Dictionary<char, double> variables)
+    public object CalculateAt(Dictionary<char, double> variables
+            ,Dictionary<char, bool> booleanVariables)
     {
         if (TreeNode == null)
             try
@@ -96,7 +97,7 @@ public class Expression(string expression)
         }
         else
         {
-            var res = EvaluateBooleanExpression(TreeNode, variables);
+            var res = EvaluateBooleanExpression(TreeNode, variables, booleanVariables);
 
             return res;
         }
@@ -180,21 +181,35 @@ public class Expression(string expression)
         else
             return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
     }
-    static object EvaluateBooleanExpression(Node<Token> node, Dictionary<char, double> variables)
+    static object EvaluateBooleanExpression
+        (Node<Token> node,
+        Dictionary<char, double> variables,
+        Dictionary<char, bool> booleanVariables)
     {
         if (node == null)
             return 0;
 
         if (node.Value.Type == Token.TYPE.VARIABLE)
         {
-            return variables[node.Value.TokenString.ToString()[0]];
+            var variable = node.Value.TokenString[0];
+            if (variables.TryGetValue(variable, out double value))
+                return value;
+            else
+                return booleanVariables[variable];
         }
 
         if (node.Value.IsNumber())
+        {
             return double.Parse(node.Value.TokenString);
+        }
 
-        object leftValue = EvaluateBooleanExpression(node.Left, variables);
-        object rightValue = EvaluateBooleanExpression(node.Right, variables);
+        if (node.Value.IsBoolean())
+        {
+            return bool.Parse(node.Value.TokenString);
+        }
+
+        object leftValue = EvaluateBooleanExpression(node.Left, variables, booleanVariables);
+        object rightValue = EvaluateBooleanExpression(node.Right, variables, booleanVariables);
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
             return Functions[node.Value.TokenString]((double)rightValue);

@@ -13,7 +13,8 @@ namespace Forms
         public static List<string> ParseTree(string expression)
         {
             result = new List<string>();
-            Dictionary<char, double> variables = new Dictionary<char, double>();
+            var variables = new Dictionary<char, double>();
+            var booleanVariables = new Dictionary<char, bool>();
             var tokens = Token.Tokenize(expression);
             foreach (var item in tokens)
             {
@@ -23,7 +24,7 @@ namespace Forms
                 }
             }
             var exp = new Expression(expression);
-            var value = exp.CalculateAt(variables);
+            var value = exp.CalculateAt(variables, booleanVariables);
             var node = exp.TreeNode; 
             PrintParsingTree(node);
             return result;

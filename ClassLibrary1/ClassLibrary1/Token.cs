@@ -31,12 +31,15 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { ")",    (TYPE.R_BRACE        , -4) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
             { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
-            { "<", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
-            { ">", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
-            { "=", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
-            { "&", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
-            { "|", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
-            { "!", (TYPE.BOOLEAN_FUNCTION, 3)},
+            { "<",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { ">",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "=",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "&",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "|",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "!",    (TYPE.BOOLEAN_FUNCTION, 3)},
+            { "true", (TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
+            { "false",(TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
+
         };
 
     internal const char COMMA = ',';
@@ -136,7 +139,12 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// </returns>
     internal bool IsNumber()
         => this.Type == TYPE.FLOAT_NUM || this.Type == TYPE.INT_NUM ||
-           this.Type == TYPE.CONSTANT || this.Type == TYPE.VARIABLE;
+           this.Type == TYPE.CONSTANT || 
+           (this.Type == TYPE.VARIABLE && !bool.TryParse(this.TokenString, out _));
+
+    internal bool IsBoolean() =>
+        (this.Type == TYPE.VARIABLE && bool.TryParse(this.TokenString, out _)) ||
+        (this.Type == TYPE.BOOLEAN_CONSTANT);
 
     /// <summary>
     /// Обрабатывает число в списке токенов
