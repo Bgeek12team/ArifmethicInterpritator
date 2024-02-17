@@ -1,74 +1,74 @@
 ﻿using ClassLibrary1;
+using Microsoft.VisualBasic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Forms
 {
-    public partial class expEval : Form
+    public partial class ExpEval : Form
     {
-<<<<<<< Updated upstream
-        private List<char> variables;
-=======
         private List<(string name, Type type)> variables;
->>>>>>> Stashed changes
         private string exp;
         private GroupBox groupBox;
-        private Label expControl;
         private List<TextBox> txBxInputs;
+        private RichTextBox rcBox_postFix;
+        Token[] tokens;
+        Expression expresion;
+        public ExpEval()
+        {
 
-        public expEval()
-        {
-            
             InitializeComponent();
-            
-            
+
+
         }
-        public void formOpen(Token[] tokens, string expression)
+        public void FormOpen(Token[] tokens, string expression)
         {
-<<<<<<< Updated upstream
-            variables = new List<char>();
-            foreach (Token token in tokens)
-                if (token.Type.ToString() == "VARIABLE" && !variables.Contains(Convert.ToChar(token.TokenString)))
-                    variables.Add(Convert.ToChar(token.TokenString));
-=======
             expresion = new Expression(expression);
             expresion.ParseTree();
 
             variables = [];
-            expresion.TreeNode?.ForEach(node =>
+            expresion.TreeNode.ForEach(node =>
             {
                 if (node.Value.Type == Token.TYPE.VARIABLE &&
-                    !variables.Contains((node.Value.TokenString, typeof(double))) &&
-                    !variables.Contains((node.Value.TokenString, typeof(bool))))
+                    !variables.Contains((Convert.ToString(node.Value.TokenString), typeof(double))) &&
+                    !variables.Contains((Convert.ToString(node.Value.TokenString), typeof(bool))))
                 {
                     if (node.Value.ExpectedType == typeof(double))
-                        variables.Add((node.Value.TokenString, typeof(double)));
+                        variables.Add((Convert.ToString(node.Value.TokenString), typeof(double)));
                     else
-                        variables.Add((node.Value.TokenString, typeof(bool)));
+                        variables.Add((Convert.ToString(node.Value.TokenString), typeof(bool)));
                 }
             });
 
 
             this.tokens = tokens;
->>>>>>> Stashed changes
             exp = expression;
             this.Show();
             txBxInputs = new List<TextBox>();
-            groupBox = forming();
+            groupBox = Forming();
             this.Controls.Add(groupBox);
-            
+
         }
 
 
-        private void expEval_Load(object sender, EventArgs e)
+        private void ExpEval_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
-        private GroupBox forming()
+        private GroupBox Forming()
         {
             var form = new GroupBox()
             {
-                Size = new Size(750, 400),
+                Size = new Size(850, 400),
                 Location = new Point(5, 0),
                 Font = new Font("TimeNewRomans", 24)
             };
@@ -78,14 +78,15 @@ namespace Forms
             {
                 var lVar = new Label()
                 {
-                    Text = variables[i] + "=",
-                    Size = new Size(60, 40),
-                    Location = new Point(x, y)
+                    Text = variables[i].name + " (" + variables[i].type + ") =",
+                    Size = new Size(160, 40),
+                    Location = new Point(x, y),
+                    Font = new Font("Times New Roman", 11)
                 };
                 var txBxVar = new TextBox()
                 {
                     Size = new Size(80, 40),
-                    Location = new Point(x + 65, y + 5),
+                    Location = new Point(x + 165, y + 5),
                     Font = new Font("TimeNewRomans", 16),
                     Name = $"txBx{i}_InputData"
                 };
@@ -101,32 +102,49 @@ namespace Forms
                 Location = new Point(x, y + 10),
                 Font = new Font("TimeNewRomans", 14)
             };
-            expControl = new Label()
+
+            rcBox_postFix = new RichTextBox()
             {
                 Text = exp,
-                Location = new Point(x + 200, y - variables.Count * 40),
-                Font = new Font("TimeNewRomans", 21),
-                Size = new Size(500, 300)
+                Location = new Point(x + 300, y - variables.Count * 40),
+                Font = new Font("TimeNewRomans", 16),
+                Size = new Size(600, 300)
             };
-
             buttonGetResult.Click += ButtonGetResult_Click;
             form.Controls.Add(buttonGetResult);
-            form.Controls.Add(expControl);
+            form.Controls.Add(rcBox_postFix);
             return form;
         }
 
         private void ButtonGetResult_Click(object? sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            var expression = new Expression(exp);
-            var variable = new Dictionary<char, double>();
-            for (int i = 0; i < variables.Count; i++)
-                variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
-            expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable));
-=======
             var variables = new Dictionary<string, double>();
             var booleanVariables = new Dictionary<string, bool>();
->>>>>>> Stashed changes
+
+            for (int i = 0; i < this.variables.Count; i++)
+            {
+
+                if (txBxInputs[i].Text.IsNumeric() && this.variables[i].type == typeof(double))
+                {
+                    variables.Add(this.variables[i].name, Convert.ToDouble(txBxInputs[i].Text));
+                }
+                else if (txBxInputs[i].Text.IsBoolean() && this.variables[i].type == typeof(bool))
+                {
+                    booleanVariables.Add(this.variables[i].name, Convert.ToBoolean(txBxInputs[i].Text));
+                }
+                else { MessageBox.Show("Некорректное значение переменных!", "ОШИБКА"); return; }
+
+            }
+            var result = expresion.CalculateAt(variables, booleanVariables);
+            if (expresion.IsBooleanExpression)
+                rcBox_postFix.Text += "= " + Convert.ToString((bool)result + "\n Постфиксная запись:");
+            else
+                rcBox_postFix.Text += "= " + Convert.ToString((double)result + "\n Постфиксная запись:");
+
+            expresion.TreeNode.ForEach(node =>
+            {
+                rcBox_postFix.Text += $"\n{node.Value}";
+            });
 
 
         }

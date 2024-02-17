@@ -6,14 +6,48 @@ public partial class Token
     /// </summary>
     public enum TYPE
     {
-        BINARY_OPERATOR, // оператор бинарный
-        UNARY_OPERATOR, // унарный оператор (унарный минус)
-        INT_NUM, // целое число
-        FLOAT_NUM, // число с плав запятой
-        FUNCTION, // функция
-        L_BRACE, //левая скобка
-        R_BRACE, //правая скобка
+        /// <summary>
+        /// оператор бинарный
+        /// </summary>
+        BINARY_OPERATOR,
+        /// <summary>
+        /// унарный оператор (унарный минус)
+        /// </summary>
+        UNARY_OPERATOR,
+        /// <summary>
+        /// целое число
+        /// </summary>
+        INT_NUM,
+        /// <summary>
+        /// число с плавающей запятой
+        /// </summary>
+        FLOAT_NUM,
+        /// <summary>
+        /// функция
+        /// </summary>
+        FUNCTION,
+        /// <summary>
+        /// левая скобка
+        /// </summary>
+        L_BRACE,
+        /// <summary>
+        /// правая скобка
+        /// </summary>
+        R_BRACE,
+        /// <summary>
+        /// математическая константа
+        /// </summary>
         CONSTANT,
-        VARIABLE // переменная 
+        /// <summary>
+        /// переменная
+        /// </summary>
+        VARIABLE,
+        /// <summary>
+        /// булевый оператор
+        /// </summary>
+        ARIPTHMETIC_BOOLEAN_OPERATOR,
+        BOOLEAN_BOOLEAN_OPERATOR,
+        BOOLEAN_FUNCTION,
+        BOOLEAN_CONSTANT
     }
 }

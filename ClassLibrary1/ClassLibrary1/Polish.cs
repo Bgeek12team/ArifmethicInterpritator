@@ -1,6 +1,14 @@
 ﻿namespace ClassLibrary1;
+/// <summary>
+/// Класс, переводящий массив токенов в инверсную польскую запись
+/// </summary>
 public static class Polish
 {
+    /// <summary>
+    /// Переводит массив токенов в инверсную польскую запись
+    /// </summary>
+    /// <param name="expression">Массив токенов</param>
+    /// <returns>Массив токенов в инверсной польской записи</returns>
     public static Token[] ToInversePolishView(Token[] expression)
     {
         var output = new List<Token>();
@@ -8,11 +16,14 @@ public static class Polish
 
         foreach (var token in expression)
         {
-            if (token.IsNumber())
+            if (token.IsNumber() || token.IsBoolean())
                 output.Add(token);
 
             else if (token.Type == Token.TYPE.BINARY_OPERATOR ||
-                     token.Type == Token.TYPE.FUNCTION)
+                     token.Type == Token.TYPE.FUNCTION ||
+                     token.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR ||
+                     token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR ||
+                     token.Type == Token.TYPE.BOOLEAN_FUNCTION)
             {
                 while (operators.Count > 0 &&
                     token.Precendency <= operators.Peek().Precendency)
@@ -26,7 +37,7 @@ public static class Polish
 
             else if (token.Type == Token.TYPE.R_BRACE)
             {
-                while (operators.Count > 0 && 
+                while (operators.Count > 0 &&
                        operators.Peek().Type != Token.TYPE.L_BRACE)
                 {
                     output.Add(operators.Pop());

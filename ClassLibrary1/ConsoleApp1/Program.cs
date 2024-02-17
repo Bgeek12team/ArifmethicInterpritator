@@ -10,7 +10,6 @@ var exp = new Expression(expression);
 var variables = new Dictionary<char, double>()
 {
     {'x', 12 },
+
     {'y', 2 }
 };
-
-Console.WriteLine(exp.CalculateAt(variables));

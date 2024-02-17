@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class expEval
+    partial class ExpEval
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,15 @@
         {
             SuspendLayout();
             // 
-            // expEval
+            // ExpEval
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 411);
-            Name = "expEval";
+            ClientSize = new Size(1102, 548);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "ExpEval";
             Text = "expEval";
-            Load += expEval_Load;
+            Load += ExpEval_Load;
             ResumeLayout(false);
         }
 

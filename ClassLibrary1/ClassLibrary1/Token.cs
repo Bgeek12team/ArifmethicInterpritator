@@ -1,6 +1,16 @@
 ﻿namespace ClassLibrary1;
+/// <summary>
+/// Токен, или же лексема, арифметического выражения
+/// </summary>
+/// <param name="str">строковое представление лексемы</param>
+/// <param name="type">тип лексеы</param>
+/// <param name="precendency">приоритет лексемы</param>
 public partial class Token(string str, Token.TYPE type, int precendency)
 {
+    /// <summary>
+    /// Словарь, связывающий строковое представление лексем
+    /// их тип и приоритет
+    /// </summary>
     internal static readonly Dictionary<string, (TYPE tokenType, int precendency)> tokenMap = new()
          {
             { "+",    (TYPE.BINARY_OPERATOR, 0) },
@@ -17,28 +27,23 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "ln",   (TYPE.FUNCTION       , 3) },
             { "sqrt", (TYPE.FUNCTION       , 3) },
             { "fact", (TYPE.FUNCTION       , 3) },
-            { "(",    (TYPE.L_BRACE        , -1) },
-            { ")",    (TYPE.R_BRACE        , -1) },
+            { "(",    (TYPE.L_BRACE        , -4) },
+            { ")",    (TYPE.R_BRACE        , -4) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
-<<<<<<< Updated upstream
-            { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)}
-=======
             { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
             { "<",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { ">",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { "=>",   (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -1)},
-            { "==",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "=",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { "&",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
             { "|",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
             { "!",    (TYPE.BOOLEAN_FUNCTION, 3)},
             { "true", (TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
             { "false",(TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
 
->>>>>>> Stashed changes
         };
 
     internal const char COMMA = ',';
-
     internal const int NUMBER_PRECENDENCY = 11;
     /// <summary>
     /// Тип текущего токена
@@ -49,9 +54,13 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// Строка, отображающая токен
     /// </summary>
     public string TokenString { get => str; }
-
+    /// <summary>
+    /// Приоритет токена
+    /// </summary>
     public int Precendency { get => precendency; }
 
+
+    public Type ExpectedType { get; set; }
     /// <summary>
     /// Функция, извлекающая из строки массив токенов
     /// </summary>
@@ -78,45 +87,30 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             {
                 break;
             }
-            var end = start;
-            bool flag = false;
-            while (end < str.Length
-                && !Char.IsWhiteSpace(str[end])
-                && !Find(ref end, tokens, str))
+            var found = false;
+            foreach (var tokenStr in tokenMap.Keys)
+                if (!found && str[start..].StartsWith(tokenStr))
+                {
+                    var (tokenType, precendency) = tokenMap[tokenStr];
+                    tokens.Add(new(tokenStr, tokenType, precendency));
+                    start += tokenStr.Length;
+                    found = true;
+                    break;
+                }
+            if (!found && start < str.Length)
             {
-                end++;
-                flag = true;
+                tokens.Add(new(str[start].ToString(), TYPE.VARIABLE, NUMBER_PRECENDENCY));
+                start++;
             }
-            if (flag)
-                tokens.Add(new(str[start..end], TYPE.VARIABLE, NUMBER_PRECENDENCY));
-            start = end;
         }
         ParseUnary(tokens);
 
         return [.. tokens];
     }
-<<<<<<< Updated upstream
-=======
-
-    static bool Find(ref int start, List<Token> tokens, string str)
-    {
-        var found = false;
-        foreach (var tokenStr in tokenMap.Keys)
-            if (!found && str[start..].StartsWith(tokenStr))
-            {
-                var (tokenType, precendency) = tokenMap[tokenStr];
-                tokens.Add(new(tokenStr, tokenType, precendency));
-                start += tokenStr.Length;
-                found = true;
-                break;
-            }
-        return found;
-    }
     /// <summary>
     /// Преобразует бинарные минусы в унарные при необходимости
     /// </summary>
     /// <param name="tokens">Обрабатываемый список токенов</param>
->>>>>>> Stashed changes
     private static void ParseUnary(List<Token> tokens)
     {
         if (tokens[0].TokenString == "-")
@@ -131,12 +125,7 @@ public partial class Token(string str, Token.TYPE type, int precendency)
                 var isBinary = prevToken.IsNumber() && nextToken.IsNumber() ||
                                prevToken.Type == TYPE.R_BRACE && nextToken.Type == TYPE.L_BRACE ||
                                prevToken.IsNumber() && nextToken.Type == TYPE.L_BRACE ||
-                               prevToken.Type == TYPE.R_BRACE && nextToken.IsNumber() ||
-                               prevToken.Type == TYPE.FUNCTION && nextToken.IsNumber() ||
-                               prevToken.Type == TYPE.FUNCTION && nextToken.Type == TYPE.FUNCTION ||
-                               prevToken.IsNumber() && nextToken.Type == TYPE.FUNCTION ||
-                               prevToken.Type == TYPE.R_BRACE && nextToken.Type == TYPE.FUNCTION ||
-                               prevToken.Type == TYPE.FUNCTION && nextToken.Type == TYPE.L_BRACE;
+                               prevToken.Type == TYPE.R_BRACE && nextToken.IsNumber();
                 if (!isBinary)
                 {
                     tokens[i].Type = TYPE.FUNCTION;
@@ -144,13 +133,29 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             }
         }
     }
-    internal bool IsNumber()
+    /// <summary>
+    /// Проверяет, является ли токен числом в том или ином виде
+    /// </summary>
+    /// <returns>
+    /// True: токен является числом в том или ином виде
+    /// False: все иные случаи
+    /// </returns>
+    public bool IsNumber()
         => this.Type == TYPE.FLOAT_NUM || this.Type == TYPE.INT_NUM ||
-           this.Type == TYPE.CONSTANT || this.Type == TYPE.VARIABLE;
+           this.Type == TYPE.CONSTANT ||
+           (this.Type == TYPE.VARIABLE && !bool.TryParse(this.TokenString, out _));
 
-    internal bool IsBracket()
-        => this.Type == TYPE.L_BRACE || this.Type == TYPE.R_BRACE;
+    public bool IsBoolean() =>
+        (this.Type == TYPE.VARIABLE && bool.TryParse(this.TokenString, out _)) ||
+        (this.Type == TYPE.BOOLEAN_CONSTANT);
 
+    /// <summary>
+    /// Обрабатывает число в списке токенов
+    /// </summary>
+    /// <param name="tokens">список токенов</param>
+    /// <param name="str">Обрабатываемая строка</param>
+    /// <param name="start">Индекс, с которого начинается обработка чисел</param>
+    /// <returns>Индекс, следующий за последним символом строки</returns>
     private static int ParseNum(List<Token> tokens, string str, int start)
     {
         var end = str.Length;
@@ -181,6 +186,15 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// <returns>Тип токена и строку, его представляющую</returns>
     public override string ToString()
     {
-        return $"{str} : {type} : {precendency}";
+        var res = $"[ string: {str} ;" +
+            $"tokenType: {type} ;" +
+            $"precendency: {precendency} ;";
+
+        if (ExpectedType is not null)
+            res +=
+            $"expected type: {ExpectedType}";
+
+        res += "]";
+        return res;
     }
 }
