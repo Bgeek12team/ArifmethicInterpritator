@@ -115,8 +115,13 @@ namespace Forms
                 
             }
             var inverse = Polish.ToInversePolishView(tokens);
-            rcBox_postFix.Text += "= " + Convert.ToString(expression.CalculateAt(variable)) + "\n Постфиксная запись:";
-            
+            var result = expression.CalculateAt(variable);
+            if (expression.IsBooleanExpression)
+                rcBox_postFix.Text += "= " + Convert.ToString((bool)result + "\n Постфиксная запись:");
+            else
+                rcBox_postFix.Text += "= " + Convert.ToString((double)result + "\n Постфиксная запись:");
+
+
             foreach (var item in inverse)
                 rcBox_postFix.Text += $"\n{item}";
         }

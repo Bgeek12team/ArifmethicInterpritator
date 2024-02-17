@@ -41,6 +41,11 @@ public partial class Token
         /// <summary>
         /// переменная
         /// </summary>
-        VARIABLE  
+        VARIABLE,
+        /// <summary>
+        /// булевый оператор
+        /// </summary>
+        ARIPTHMETIC_BOOLEAN_OPERATOR,
+        BOOLEAN_BOOLEAN_OPERATOR
     }
 }

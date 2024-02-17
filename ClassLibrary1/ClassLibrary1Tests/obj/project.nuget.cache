@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rrzQ1ZhZfWJGje6jQWkBPecS8v7ylGR/o5IOk9YBTAnzhXQSAsNdkVfp/ySD7cWrWvBhZSeChtkZpz+KU0Fx8A==",
+  "dgSpecHash": "uPZ8FzQ6gglBS8aF9WrMB8+nFn1SWN70wO1XWGcDC4bmfPaKiynxuoJDzVwl9wUl/ss109nhthBR2SkF+rybyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritator\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+  "projectFilePath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Алексей\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\Алексей\\.nuget\\packages\\microsoft.codecoverage\\17.6.0\\microsoft.codecoverage.17.6.0.nupkg.sha512",

@@ -34,6 +34,20 @@ public class Expression(string expression)
         {"%", (a, b) => a % b },
     };
     /// <summary>
+    /// Словарь, связывающий бинарные операторы и их вычисление
+    /// </summary>
+    private static readonly Dictionary<string, Func<double, double, bool>> BooleanOperators = new()
+    {
+        {">", (a, b) => a > b },
+        {"<", (a, b) => a < b },
+        {"=", (a, b) => a == b }
+    }; 
+    private static readonly Dictionary<string, Func<bool, bool, bool>> BooleanBooleanOperators = new()
+    {
+        {"&", (a, b) => a && b },
+        {"|", (a, b) => a || b },
+    };
+    /// <summary>
     /// Словарь, связывающий константы и их значения
     /// </summary>
     private readonly Dictionary<string, double> Constants = new()
@@ -54,7 +68,9 @@ public class Expression(string expression)
     /// </summary>
     /// <param name="variables">Словарь, связывающий перменные и их значения</param>
     /// <returns>Значение выражения при заданных перменных</returns>
-    public double CalculateAt(Dictionary<char, double> variables)
+    public bool IsBooleanExpression { get; private set; } = false;
+
+    public object CalculateAt(Dictionary<char, double> variables)
     {
         if (TreeNode == null)
             try
@@ -68,10 +84,18 @@ public class Expression(string expression)
             {
                 return double.NaN;
             }
+        if (!IsBooleanExpression)
+        {
+            var res = EvaluateAriphmeticExpression(TreeNode, variables);
 
-        var res = EvaluateExpression(TreeNode, variables);
+            return res;
+        }
+        else
+        {
+            var res = EvaluateBooleanExpression(TreeNode, variables);
 
-        return res;
+            return res;
+        }
     }
     /// <summary>
     /// строит дерево парсинга по массиву токенов в постфиксной записи
@@ -80,7 +104,7 @@ public class Expression(string expression)
     /// <returns>верхняя вершина дерева парсинга</returns>
     /// <exception cref="Exception">исключение возникающее 
     /// если значение выражения невозможно вычислить</exception>
-    private static Node<Token> CalculateTree(Token[] tokens)
+    private Node<Token> CalculateTree(Token[] tokens)
     {
         var stack = new Stack<Node<Token>>();
 
@@ -100,6 +124,14 @@ public class Expression(string expression)
             if (token.Type == Token.TYPE.L_BRACE)
                 continue;
 
+            if (token.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR ||
+                token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
+            {
+                IsBooleanExpression = true;
+                node.Right = stack.Pop();
+                node.Left = stack.Pop();
+            }
+
             stack.Push(node);
         }
 
@@ -113,7 +145,7 @@ public class Expression(string expression)
     /// <param name="node">вершина дерева парсинга</param>
     /// <param name="variables">словарь переменных-значений/param>
     /// <returns>значение дерева парсинга</returns>
-    static double EvaluateExpression(Node<Token> node, Dictionary<char, double> variables)
+    static object EvaluateAriphmeticExpression(Node<Token> node, Dictionary<char, double> variables)
     {
         if (node == null)
             return 0;
@@ -126,13 +158,39 @@ public class Expression(string expression)
         if (node.Value.IsNumber())
             return double.Parse(node.Value.TokenString);
 
-        double leftValue = EvaluateExpression(node.Left, variables);
-        double rightValue = EvaluateExpression(node.Right, variables);
+        object leftValue = EvaluateAriphmeticExpression(node.Left, variables);
+        object rightValue = EvaluateAriphmeticExpression(node.Right, variables);
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
-            return Functions[node.Value.TokenString](rightValue);
+            return Functions[node.Value.TokenString]((double)rightValue);
         else
-            return BinaryOperators[node.Value.TokenString](leftValue, rightValue);
+            return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
+    }
+    static object EvaluateBooleanExpression(Node<Token> node, Dictionary<char, double> variables)
+    {
+        if (node == null)
+            return 0;
+
+        if (node.Value.Type == Token.TYPE.VARIABLE)
+        {
+            return variables[node.Value.TokenString.ToString()[0]];
+        }
+
+        if (node.Value.IsNumber())
+            return double.Parse(node.Value.TokenString);
+
+        object leftValue = EvaluateBooleanExpression(node.Left, variables);
+        object rightValue = EvaluateBooleanExpression(node.Right, variables);
+
+        if (node.Value.Type == Token.TYPE.FUNCTION)
+            return Functions[node.Value.TokenString]((double)rightValue);
+        else if (node.Value.Type == Token.TYPE.BINARY_OPERATOR)
+            return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
+        else if (node.Value.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR)
+            return BooleanOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
+        else
+            return BooleanBooleanOperators[node.Value.TokenString]((bool)leftValue, (bool)rightValue);
+
     }
     /// <summary>
     /// Преобразует массив токенов, заменяя константы фактическими значениямии

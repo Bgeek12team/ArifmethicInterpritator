@@ -27,10 +27,15 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "ln",   (TYPE.FUNCTION       , 3) },
             { "sqrt", (TYPE.FUNCTION       , 3) },
             { "fact", (TYPE.FUNCTION       , 3) },
-            { "(",    (TYPE.L_BRACE        , -1) },
-            { ")",    (TYPE.R_BRACE        , -1) },
+            { "(",    (TYPE.L_BRACE        , -3) },
+            { ")",    (TYPE.R_BRACE        , -3) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
-            { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)}
+            { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
+            { "<", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { ">", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "=", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "&", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "|", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
         };
 
     internal const char COMMA = ',';
