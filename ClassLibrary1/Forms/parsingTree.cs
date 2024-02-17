@@ -9,22 +9,12 @@ namespace Forms
 {
     internal static class ParsingTree
     {
-        private static List<string> result;
+        private static List<string> result =[];
         public static List<string> ParseTree(string expression)
         {
-            result = new List<string>();
-            var variables = new Dictionary<char, double>();
-            var booleanVariables = new Dictionary<char, bool>();
-            var tokens = Token.Tokenize(expression);
-            foreach (var item in tokens)
-            {
-                if (item.Type == Token.TYPE.VARIABLE)
-                {
-                    variables.TryAdd(Convert.ToChar(item.TokenString), 1);
-                }
-            }
+            
             var exp = new Expression(expression);
-            var value = exp.CalculateAt(variables, booleanVariables);
+            exp.ParseTree();
             var node = exp.TreeNode; 
             PrintParsingTree(node);
             return result;
@@ -48,7 +38,7 @@ namespace Forms
                 indent += "| ";
             }
 
-            result.Add(node.Value.TokenString + "\n");
+            result.Add(node.Value.TokenString + ", expected: " + node.Value.ExpectedType +"\n");
 
             PrintParsingTree(node.Left, indent, node.Right == null);
             PrintParsingTree(node.Right, indent, true);

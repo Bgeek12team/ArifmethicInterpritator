@@ -46,6 +46,7 @@ public class Expression(string expression)
     {
         {"&", (a, b) => a && b },
         {"|", (a, b) => a || b },
+        {"=>", (a, b) => !a || b }
     };
     private static readonly Dictionary<string, Func<bool, bool>> BooleanFunctions = new()
     {
@@ -74,8 +75,7 @@ public class Expression(string expression)
     /// <returns>Значение выражения при заданных перменных</returns>
     public bool IsBooleanExpression { get; private set; } = false;
 
-    public object CalculateAt(Dictionary<char, double> variables
-            ,Dictionary<char, bool> booleanVariables)
+    public bool ParseTree()
     {
         if (TreeNode == null)
             try
@@ -83,12 +83,21 @@ public class Expression(string expression)
                 var tokens = Token.Tokenize(StringExpression);
                 var postfix = Polish.ToInversePolishView(tokens);
                 Transform(postfix);
-                TreeNode = CalculateTree(postfix);
+                TreeNode = BuildTree(postfix);
             }
             catch
             {
-                return double.NaN;
+                return false;
             }
+
+        return true;
+    }
+
+    public object CalculateAt(Dictionary<char, double> variables
+            ,Dictionary<char, bool> booleanVariables)
+    {
+        if (!ParseTree())
+            return double.NaN;
         if (!IsBooleanExpression)
         {
             var res = EvaluateAriphmeticExpression(TreeNode, variables);
@@ -109,7 +118,7 @@ public class Expression(string expression)
     /// <returns>верхняя вершина дерева парсинга</returns>
     /// <exception cref="Exception">исключение возникающее 
     /// если значение выражения невозможно вычислить</exception>
-    private Node<Token> CalculateTree(Token[] tokens)
+    private Node<Token> BuildTree(Token[] tokens)
     {
         var stack = new Stack<Node<Token>>();
 
@@ -121,29 +130,94 @@ public class Expression(string expression)
             {
                 node.Right = stack.Pop();
                 node.Left = stack.Pop();
+
+                if (node.Left.Value.ExpectedType != typeof(double)
+                    && node.Left.Value.ExpectedType != null)
+                    throw new Exception();
+
+                if (node.Right.Value.ExpectedType != typeof(double)
+                    && node.Right.Value.ExpectedType != null)
+                    throw new Exception();
+
+                node.Left.Value.ExpectedType = typeof(double);
+                node.Right.Value.ExpectedType = typeof(double);
+
+                node.Value.ExpectedType = typeof(double);
             }
             if (token.Type == Token.TYPE.FUNCTION)
+            {
                 if (stack.TryPop(out var k))
+                {
                     node.Right = k;
+                    if (node.Right.Value.ExpectedType != typeof(double)
+                    && node.Right.Value.ExpectedType != null)
+                        throw new Exception();
 
+
+                    node.Right.Value.ExpectedType = typeof(double);
+                    node.Value.ExpectedType = typeof(double);
+                }
+            }
 
             if (token.Type == Token.TYPE.BOOLEAN_FUNCTION)
             {
                 IsBooleanExpression = true;
                 if (stack.TryPop(out var k))
+                {
                     node.Right = k;
+                    if (node.Right.Value.ExpectedType != typeof(bool)
+                    && node.Right.Value.ExpectedType != null)
+                        throw new Exception();
+
+
+                    node.Right.Value.ExpectedType = typeof(bool);
+                    node.Value.ExpectedType = typeof(bool);
+                }
             }
 
             if (token.Type == Token.TYPE.L_BRACE)
                 continue;
 
-            if (token.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR ||
-                token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
+            if (token.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR)
             {
                 IsBooleanExpression = true;
                 node.Right = stack.Pop();
                 node.Left = stack.Pop();
+
+                if (node.Right.Value.ExpectedType != typeof(double)
+                    && node.Right.Value.ExpectedType != null)
+                    throw new Exception();
+                if (node.Left.Value.ExpectedType != typeof(double)
+                    && node.Left.Value.ExpectedType != null)
+                    throw new Exception();
+
+                node.Left.Value.ExpectedType = typeof(double);
+                node.Right.Value.ExpectedType = typeof(double);
+                node.Value.ExpectedType = typeof(bool);
             }
+            if (token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
+            {
+                IsBooleanExpression = true;
+                node.Right = stack.Pop();
+                node.Left = stack.Pop(); 
+
+                if (node.Right.Value.ExpectedType != typeof(bool)
+                    && node.Right.Value.ExpectedType != null)
+                    throw new Exception();
+                if (node.Left.Value.ExpectedType != typeof(bool)
+                    && node.Left.Value.ExpectedType != null)
+                    throw new Exception();
+
+
+                node.Left.Value.ExpectedType = typeof(bool);
+                node.Right.Value.ExpectedType = typeof(bool);
+                node.Value.ExpectedType = typeof(bool);
+            }
+            if (token.IsBoolean())
+                token.ExpectedType = typeof(bool);
+            if (token.Type == Token.TYPE.INT_NUM || token.Type == Token.TYPE.FLOAT_NUM ||
+                token.Type == Token.TYPE.CONSTANT)
+                token.ExpectedType = typeof(double);
 
             stack.Push(node);
         }
@@ -176,8 +250,6 @@ public class Expression(string expression)
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
             return Functions[node.Value.TokenString]((double)rightValue);
-        else if (node.Value.Type == Token.TYPE.BOOLEAN_FUNCTION)
-            return BooleanFunctions[node.Value.TokenString]((bool)rightValue);
         else
             return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
     }
@@ -219,10 +291,12 @@ public class Expression(string expression)
             return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
         else if (node.Value.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR)
             return BooleanOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
-        else
+        else if (node.Value.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
             return BooleanBooleanOperators[node.Value.TokenString]((bool)leftValue, (bool)rightValue);
-
+        else
+            return double.NaN;
     }
+
     /// <summary>
     /// Преобразует массив токенов, заменяя константы фактическими значениямии
     /// </summary>

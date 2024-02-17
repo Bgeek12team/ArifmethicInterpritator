@@ -30,4 +30,13 @@ public class Node<T>
         Left = null;
         Right = null;
     }
+
+    public void ForEach(Action<Node<T>> action)
+    {
+        action(this);
+        if (Left != null)
+            Left.ForEach(action);
+        if (Right != null)
+            Right.ForEach(action);
+    }
 }

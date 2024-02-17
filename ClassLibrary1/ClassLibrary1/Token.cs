@@ -33,6 +33,7 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
             { "<",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { ">",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "=>",   (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -1)},
             { "=",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { "&",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
             { "|",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
@@ -58,6 +59,8 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// </summary>
     public int Precendency { get => precendency; }
 
+
+    public Type ExpectedType { get; set; }
     /// <summary>
     /// Функция, извлекающая из строки массив токенов
     /// </summary>
@@ -137,12 +140,12 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// True: токен является числом в том или ином виде
     /// False: все иные случаи
     /// </returns>
-    internal bool IsNumber()
+    public bool IsNumber()
         => this.Type == TYPE.FLOAT_NUM || this.Type == TYPE.INT_NUM ||
            this.Type == TYPE.CONSTANT || 
            (this.Type == TYPE.VARIABLE && !bool.TryParse(this.TokenString, out _));
 
-    internal bool IsBoolean() =>
+    public bool IsBoolean() =>
         (this.Type == TYPE.VARIABLE && bool.TryParse(this.TokenString, out _)) ||
         (this.Type == TYPE.BOOLEAN_CONSTANT);
 
@@ -183,6 +186,15 @@ public partial class Token(string str, Token.TYPE type, int precendency)
     /// <returns>Тип токена и строку, его представляющую</returns>
     public override string ToString()
     {
-        return $"{str} : {type} : {precendency}";
+        var res = $"[ string: {str} ;" +
+            $"tokenType: {type} ;" +
+            $"precendency: {precendency} ;";
+
+        if (ExpectedType is not null)
+            res +=
+            $"expected type: {ExpectedType}";
+
+        res += "]";
+        return res;
     }
 }
