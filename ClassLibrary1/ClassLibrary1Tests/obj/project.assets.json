@@ -1091,9 +1091,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
       "projectName": "ClassLibrary1Tests",
-      "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
+      "projectPath": "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\ClassLibrary1Tests.csproj",
       "packagesPath": "C:\\Users\\Алексей\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1Tests\\obj\\",
       "projectStyle": "PackageReference",
@@ -1116,8 +1116,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
-              "projectPath": "C:\\Users\\Алексей\\Source\\Repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
             }
           }
         }

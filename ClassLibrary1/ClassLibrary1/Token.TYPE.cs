@@ -46,6 +46,7 @@ public partial class Token
         /// булевый оператор
         /// </summary>
         ARIPTHMETIC_BOOLEAN_OPERATOR,
-        BOOLEAN_BOOLEAN_OPERATOR
+        BOOLEAN_BOOLEAN_OPERATOR,
+        BOOLEAN_FUNCTION
     }
 }

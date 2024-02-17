@@ -22,7 +22,8 @@ public static class Polish
             else if (token.Type == Token.TYPE.BINARY_OPERATOR ||
                      token.Type == Token.TYPE.FUNCTION ||
                      token.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR ||
-                     token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
+                     token.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR ||
+                     token.Type == Token.TYPE.BOOLEAN_FUNCTION)
             {
                 while (operators.Count > 0 &&
                     token.Precendency <= operators.Peek().Precendency)

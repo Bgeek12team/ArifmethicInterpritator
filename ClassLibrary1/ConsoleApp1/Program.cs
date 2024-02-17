@@ -1,6 +1,6 @@
 ﻿using ClassLibrary1;
 
-var expression = "x > y | y < e";
+var expression = "x > y | !(y < e)";
 var tokens = Token.Tokenize(expression);
 var inverse = Polish.ToInversePolishView(tokens);
 foreach (var token in inverse)

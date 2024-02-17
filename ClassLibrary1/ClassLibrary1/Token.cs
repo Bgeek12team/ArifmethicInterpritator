@@ -27,8 +27,8 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "ln",   (TYPE.FUNCTION       , 3) },
             { "sqrt", (TYPE.FUNCTION       , 3) },
             { "fact", (TYPE.FUNCTION       , 3) },
-            { "(",    (TYPE.L_BRACE        , -3) },
-            { ")",    (TYPE.R_BRACE        , -3) },
+            { "(",    (TYPE.L_BRACE        , -4) },
+            { ")",    (TYPE.R_BRACE        , -4) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
             { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
             { "<", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
@@ -36,6 +36,7 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "=", (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
             { "&", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
             { "|", (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "!", (TYPE.BOOLEAN_FUNCTION, 3)},
         };
 
     internal const char COMMA = ',';

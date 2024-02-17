@@ -47,6 +47,10 @@ public class Expression(string expression)
         {"&", (a, b) => a && b },
         {"|", (a, b) => a || b },
     };
+    private static readonly Dictionary<string, Func<bool, bool>> BooleanFunctions = new()
+    {
+        {"!", a => !a }
+    };
     /// <summary>
     /// Словарь, связывающий константы и их значения
     /// </summary>
@@ -121,6 +125,14 @@ public class Expression(string expression)
                 if (stack.TryPop(out var k))
                     node.Right = k;
 
+
+            if (token.Type == Token.TYPE.BOOLEAN_FUNCTION)
+            {
+                IsBooleanExpression = true;
+                if (stack.TryPop(out var k))
+                    node.Right = k;
+            }
+
             if (token.Type == Token.TYPE.L_BRACE)
                 continue;
 
@@ -163,6 +175,8 @@ public class Expression(string expression)
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
             return Functions[node.Value.TokenString]((double)rightValue);
+        else if (node.Value.Type == Token.TYPE.BOOLEAN_FUNCTION)
+            return BooleanFunctions[node.Value.TokenString]((bool)rightValue);
         else
             return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
     }
@@ -184,6 +198,8 @@ public class Expression(string expression)
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
             return Functions[node.Value.TokenString]((double)rightValue);
+        else if (node.Value.Type == Token.TYPE.BOOLEAN_FUNCTION)
+            return BooleanFunctions[node.Value.TokenString]((bool)rightValue);
         else if (node.Value.Type == Token.TYPE.BINARY_OPERATOR)
             return BinaryOperators[node.Value.TokenString]((double)leftValue, (double)rightValue);
         else if (node.Value.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR)
