@@ -20,7 +20,21 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             { "(",    (TYPE.L_BRACE        , -1) },
             { ")",    (TYPE.R_BRACE        , -1) },
             { "e",    (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
+<<<<<<< Updated upstream
             { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)}
+=======
+            { "pi",   (TYPE.CONSTANT       , NUMBER_PRECENDENCY)},
+            { "<",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { ">",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "=>",   (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -1)},
+            { "==",    (TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR, -1)},
+            { "&",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "|",    (TYPE.BOOLEAN_BOOLEAN_OPERATOR, -2)},
+            { "!",    (TYPE.BOOLEAN_FUNCTION, 3)},
+            { "true", (TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
+            { "false",(TYPE.BOOLEAN_CONSTANT, NUMBER_PRECENDENCY)},
+
+>>>>>>> Stashed changes
         };
 
     internal const char COMMA = ',';
@@ -64,26 +78,45 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             {
                 break;
             }
-            var found = false;
-            foreach (var tokenStr in tokenMap.Keys)
-                if (!found && str[start..].StartsWith(tokenStr))
-                {
-                    var (tokenType, precendency) = tokenMap[tokenStr];
-                    tokens.Add(new(tokenStr, tokenType, precendency));
-                    start += tokenStr.Length;
-                    found = true;
-                    break;
-                }
-            if (!found && start < str.Length)
+            var end = start;
+            bool flag = false;
+            while (end < str.Length
+                && !Char.IsWhiteSpace(str[end])
+                && !Find(ref end, tokens, str))
             {
-                tokens.Add(new(str[start].ToString(), TYPE.VARIABLE, NUMBER_PRECENDENCY));
-                start++;
+                end++;
+                flag = true;
             }
+            if (flag)
+                tokens.Add(new(str[start..end], TYPE.VARIABLE, NUMBER_PRECENDENCY));
+            start = end;
         }
         ParseUnary(tokens);
 
         return [.. tokens];
     }
+<<<<<<< Updated upstream
+=======
+
+    static bool Find(ref int start, List<Token> tokens, string str)
+    {
+        var found = false;
+        foreach (var tokenStr in tokenMap.Keys)
+            if (!found && str[start..].StartsWith(tokenStr))
+            {
+                var (tokenType, precendency) = tokenMap[tokenStr];
+                tokens.Add(new(tokenStr, tokenType, precendency));
+                start += tokenStr.Length;
+                found = true;
+                break;
+            }
+        return found;
+    }
+    /// <summary>
+    /// Преобразует бинарные минусы в унарные при необходимости
+    /// </summary>
+    /// <param name="tokens">Обрабатываемый список токенов</param>
+>>>>>>> Stashed changes
     private static void ParseUnary(List<Token> tokens)
     {
         if (tokens[0].TokenString == "-")
@@ -98,7 +131,12 @@ public partial class Token(string str, Token.TYPE type, int precendency)
                 var isBinary = prevToken.IsNumber() && nextToken.IsNumber() ||
                                prevToken.Type == TYPE.R_BRACE && nextToken.Type == TYPE.L_BRACE ||
                                prevToken.IsNumber() && nextToken.Type == TYPE.L_BRACE ||
-                               prevToken.Type == TYPE.R_BRACE && nextToken.IsNumber();
+                               prevToken.Type == TYPE.R_BRACE && nextToken.IsNumber() ||
+                               prevToken.Type == TYPE.FUNCTION && nextToken.IsNumber() ||
+                               prevToken.Type == TYPE.FUNCTION && nextToken.Type == TYPE.FUNCTION ||
+                               prevToken.IsNumber() && nextToken.Type == TYPE.FUNCTION ||
+                               prevToken.Type == TYPE.R_BRACE && nextToken.Type == TYPE.FUNCTION ||
+                               prevToken.Type == TYPE.FUNCTION && nextToken.Type == TYPE.L_BRACE;
                 if (!isBinary)
                 {
                     tokens[i].Type = TYPE.FUNCTION;

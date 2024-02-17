@@ -4,7 +4,11 @@ namespace Forms
 {
     public partial class expEval : Form
     {
+<<<<<<< Updated upstream
         private List<char> variables;
+=======
+        private List<(string name, Type type)> variables;
+>>>>>>> Stashed changes
         private string exp;
         private GroupBox groupBox;
         private Label expControl;
@@ -19,10 +23,32 @@ namespace Forms
         }
         public void formOpen(Token[] tokens, string expression)
         {
+<<<<<<< Updated upstream
             variables = new List<char>();
             foreach (Token token in tokens)
                 if (token.Type.ToString() == "VARIABLE" && !variables.Contains(Convert.ToChar(token.TokenString)))
                     variables.Add(Convert.ToChar(token.TokenString));
+=======
+            expresion = new Expression(expression);
+            expresion.ParseTree();
+
+            variables = [];
+            expresion.TreeNode?.ForEach(node =>
+            {
+                if (node.Value.Type == Token.TYPE.VARIABLE &&
+                    !variables.Contains((node.Value.TokenString, typeof(double))) &&
+                    !variables.Contains((node.Value.TokenString, typeof(bool))))
+                {
+                    if (node.Value.ExpectedType == typeof(double))
+                        variables.Add((node.Value.TokenString, typeof(double)));
+                    else
+                        variables.Add((node.Value.TokenString, typeof(bool)));
+                }
+            });
+
+
+            this.tokens = tokens;
+>>>>>>> Stashed changes
             exp = expression;
             this.Show();
             txBxInputs = new List<TextBox>();
@@ -91,11 +117,16 @@ namespace Forms
 
         private void ButtonGetResult_Click(object? sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             var expression = new Expression(exp);
             var variable = new Dictionary<char, double>();
             for (int i = 0; i < variables.Count; i++)
                 variable.Add(variables[i], Convert.ToDouble(txBxInputs[i].Text));
             expControl.Text += "= " + Convert.ToString(expression.CalculateAt(variable));
+=======
+            var variables = new Dictionary<string, double>();
+            var booleanVariables = new Dictionary<string, bool>();
+>>>>>>> Stashed changes
 
 
         }

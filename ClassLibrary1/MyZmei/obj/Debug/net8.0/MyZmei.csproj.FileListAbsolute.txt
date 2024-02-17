@@ -1,0 +1,16 @@
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\bin\Debug\net8.0\MyZmei.deps.json
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\bin\Debug\net8.0\MyZmei.dll
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\bin\Debug\net8.0\MyZmei.pdb
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\bin\Debug\net8.0\ClassLibrary1.dll
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\bin\Debug\net8.0\ClassLibrary1.pdb
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.csproj.AssemblyReference.cache
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.AssemblyInfoInputs.cache
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.AssemblyInfo.cs
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.csproj.CoreCompileInputs.cache
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.sourcelink.json
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.csproj.CopyComplete
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.dll
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\refint\MyZmei.dll
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\MyZmei.pdb
+C:\Users\Алексей\source\repos\ArifmethicInterpritatorFF\ClassLibrary1\MyZmei\obj\Debug\net8.0\ref\MyZmei.dll

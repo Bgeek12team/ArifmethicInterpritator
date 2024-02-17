@@ -87,7 +87,37 @@ public class Expression(string expression)
 
         return res;
     }
+<<<<<<< Updated upstream
     private static Node<Token> CalculateTree(Token[] tokens)
+=======
+
+    public object CalculateAt(Dictionary<string, double> variables
+            ,Dictionary<string, bool> booleanVariables)
+    {
+        if (!ParseTree())
+            return double.NaN;
+        if (!IsBooleanExpression)
+        {
+            var res = EvaluateAriphmeticExpression(TreeNode, variables);
+
+            return res;
+        }
+        else
+        {
+            var res = EvaluateBooleanExpression(TreeNode, variables, booleanVariables);
+
+            return res;
+        }
+    }
+    /// <summary>
+    /// строит дерево парсинга по массиву токенов в постфиксной записи
+    /// </summary>
+    /// <param name="tokens">массив токенов в постификной записи</param>
+    /// <returns>верхняя вершина дерева парсинга</returns>
+    /// <exception cref="Exception">исключение возникающее 
+    /// если значение выражения невозможно вычислить</exception>
+    private Node<Token> BuildTree(Token[] tokens)
+>>>>>>> Stashed changes
     {
         var stack = new Stack<Node<Token>>();
 
@@ -114,15 +144,25 @@ public class Expression(string expression)
             return res;
         throw new Exception("Невозможно вычислить значение");
     }
+<<<<<<< Updated upstream
 
     static double EvaluateExpression(Node<Token> node, Dictionary<char, double> variables)
+=======
+    /// <summary>
+    /// вычисляет значение дерева парсинга по словарю переменных-значений
+    /// </summary>
+    /// <param name="node">вершина дерева парсинга</param>
+    /// <param name="variables">словарь переменных-значений/param>
+    /// <returns>значение дерева парсинга</returns>
+    static object EvaluateAriphmeticExpression(Node<Token> node, Dictionary<string, double> variables)
+>>>>>>> Stashed changes
     {
         if (node == null)
             return 0;
 
         if (node.Value.Type == Token.TYPE.VARIABLE)
         {
-            return variables[node.Value.TokenString.ToString()[0]];
+            return variables[node.Value.TokenString];
         }
 
         if (node.Value.IsNumber())
@@ -132,9 +172,61 @@ public class Expression(string expression)
         double rightValue = EvaluateExpression(node.Right, variables);
 
         if (node.Value.Type == Token.TYPE.FUNCTION)
+<<<<<<< Updated upstream
             return Functions[node.Value.TokenString](rightValue);
         else
             return BinaryOperators[node.Value.TokenString](leftValue, rightValue);
+=======
+            return Functions[node.Value.TokenString](Convert.ToDouble(rightValue));
+        else
+            return BinaryOperators[node.Value.TokenString](Convert.ToDouble(leftValue),
+                Convert.ToDouble(rightValue));
+    }
+    static object EvaluateBooleanExpression
+        (Node<Token> node,
+        Dictionary<string, double> variables,
+        Dictionary<string, bool> booleanVariables)
+    {
+        if (node == null)
+            return 0;
+
+        if (node.Value.Type == Token.TYPE.VARIABLE)
+        {
+            var variable = node.Value.TokenString;
+            if (variables.TryGetValue(variable, out double value))
+                return value;
+            else
+                return booleanVariables[variable];
+        }
+
+        if (node.Value.IsNumber())
+        {
+            return double.Parse(node.Value.TokenString);
+        }
+
+        if (node.Value.IsBoolean())
+        {
+            return bool.Parse(node.Value.TokenString);
+        }
+
+        object leftValue = EvaluateBooleanExpression(node.Left, variables, booleanVariables);
+        object rightValue = EvaluateBooleanExpression(node.Right, variables, booleanVariables);
+
+        if (node.Value.Type == Token.TYPE.FUNCTION)
+            return Functions[node.Value.TokenString](Convert.ToDouble(rightValue));
+        else if (node.Value.Type == Token.TYPE.BOOLEAN_FUNCTION)
+            return BooleanFunctions[node.Value.TokenString]((bool)rightValue);
+        else if (node.Value.Type == Token.TYPE.BINARY_OPERATOR)
+            return BinaryOperators[node.Value.TokenString](Convert.ToDouble(leftValue)
+                , Convert.ToDouble(rightValue));
+        else if (node.Value.Type == Token.TYPE.ARIPTHMETIC_BOOLEAN_OPERATOR)
+            return BooleanOperators[node.Value.TokenString](Convert.ToDouble(leftValue)
+                , Convert.ToDouble(rightValue));
+        else if (node.Value.Type == Token.TYPE.BOOLEAN_BOOLEAN_OPERATOR)
+            return BooleanBooleanOperators[node.Value.TokenString]((bool)leftValue, (bool)rightValue);
+        else
+            return double.NaN;
+>>>>>>> Stashed changes
     }
 
     private void Transform(Token[] postfix)
