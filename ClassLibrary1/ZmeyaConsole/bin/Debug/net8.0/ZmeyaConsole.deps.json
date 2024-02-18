@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "ZmeyaConsole/1.0.0": {
         "dependencies": {
+          "ClassLibrary1": "1.0.0",
           "MyZmei": "1.0.0"
         },
         "runtime": {

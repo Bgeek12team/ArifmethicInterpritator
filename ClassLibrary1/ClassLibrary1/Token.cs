@@ -87,25 +87,40 @@ public partial class Token(string str, Token.TYPE type, int precendency)
             {
                 break;
             }
-            var found = false;
-            foreach (var tokenStr in tokenMap.Keys)
-                if (!found && str[start..].StartsWith(tokenStr))
-                {
-                    var (tokenType, precendency) = tokenMap[tokenStr];
-                    tokens.Add(new(tokenStr, tokenType, precendency));
-                    start += tokenStr.Length;
-                    found = true;
-                    break;
-                }
-            if (!found && start < str.Length)
+            var end = start;
+            bool findToken = true;
+            Token token = new("0", TYPE.INT_NUM, 0);
+            while (end < str.Length &&
+                !Char.IsWhiteSpace(str[end]) &&
+                !Find(ref end, out token, str))
             {
-                tokens.Add(new(str[start].ToString(), TYPE.VARIABLE, NUMBER_PRECENDENCY));
-                start++;
+                end++;
+                findToken = false;
             }
+            if (!findToken)
+                tokens.Add(new(str[start.. end], TYPE.VARIABLE, NUMBER_PRECENDENCY));
+            if (findToken)
+                tokens.Add(token);
+            start = end;
         }
         ParseUnary(tokens);
 
         return [.. tokens];
+    }
+
+    static bool Find(ref int start, out Token token, string str)
+    {
+        foreach (var tokenStr in tokenMap.Keys)
+            if (str[start..].StartsWith(tokenStr))
+            {
+                var (tokenType, precendency) = tokenMap[tokenStr];
+                token = (new(tokenStr, tokenType, precendency));
+                start += tokenStr.Length;
+                return true;
+            }
+
+        token = null;
+        return false;
     }
     /// <summary>
     /// Преобразует бинарные минусы в унарные при необходимости

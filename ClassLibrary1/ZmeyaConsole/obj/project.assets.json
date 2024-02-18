@@ -41,6 +41,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "ClassLibrary1 >= 1.0.0",
       "MyZmei >= 1.0.0"
     ]
   },
@@ -76,6 +77,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj": {
+              "projectPath": "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\ClassLibrary1\\ClassLibrary1.csproj"
+            },
             "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\MyZmei\\MyZmei.csproj": {
               "projectPath": "C:\\Users\\Алексей\\source\\repos\\ArifmethicInterpritatorFF\\ClassLibrary1\\MyZmei\\MyZmei.csproj"
             }
