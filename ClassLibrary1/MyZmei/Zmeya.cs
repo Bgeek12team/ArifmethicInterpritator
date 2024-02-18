@@ -23,9 +23,9 @@ public class Zmeya
             flag = true;
             foreach (var key in variables.Keys)
             {
-                if (str.Contains(key.Name))
+                if (str.Contains($"{key.Name}"))
                 {
-                    str = str.Replace(key.Name, " ( " + variables[key].Value + " ) ");
+                    str = str.Replace(key.Name, " " + variables[key].Value + " ");
                     flag = false;
                 }
             }
@@ -59,6 +59,18 @@ public class Zmeya
             var str = KNFFunction.TrimSelf(expr);
             str = ReplaceVariables(str);
             return KNFFunction.CalculateResult(str);
+        }
+        else if (expr.Tokens[0].StringValue == MinFunction.StringValue)
+        {
+            var str = MinFunction.TrimSelf(expr);
+            str = ReplaceVariables(str);
+            return MinFunction.CalculateResult(str);
+        }
+        else if (expr.Tokens[0].StringValue == SortFunction.StringValue)
+        {
+            var str = SortFunction.TrimSelf(expr);
+            str = ReplaceVariables(str);
+            return SortFunction.CalculateResult(str);
         }
         return "не хайп не шарю";
     }

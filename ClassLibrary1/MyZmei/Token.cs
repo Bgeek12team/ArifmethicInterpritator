@@ -6,8 +6,12 @@ public class Token(string stringValue, TokenType type)
     public TokenType Type { get; init; } = type;
 
     private static readonly Dictionary<string, TokenType> tokens = new() {
-        {"провозгласить", TokenType.DECLARATION},
+        {"var", TokenType.DECLARATION},
+        {"const", TokenType.DECLARATION},
+        {"положим", TokenType.DECLARATION},
         {"равным", TokenType.ASSIGNMENT_OPERATOR },
+        {"равно", TokenType.ASSIGNMENT_OPERATOR },
+        {"=", TokenType.ASSIGNMENT_OPERATOR },
         {"!", TokenType.SEPARATOR },
         {"?", TokenType.SEPARATOR },
         {".", TokenType.DOT }
@@ -17,7 +21,9 @@ public class Token(string stringValue, TokenType type)
         [CalculateFunction.StringValue,
         PrintFunction.StringValue,
         DNFFunction.StringValue,
-        KNFFunction.StringValue];
+        KNFFunction.StringValue, 
+        MinFunction.StringValue,
+            SortFunction.StringValue];
 
     public static Token[] Tokenize(string str)
     {
